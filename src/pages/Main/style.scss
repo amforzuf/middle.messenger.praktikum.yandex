@@ -1,0 +1,16 @@
+@import './../../globalstyles.scss';
+
+.mainLink {
+  margin-bottom: 24px;
+  margin-top: 12px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 150%;
+  color: var(--text-color);
+}
+
+.mainLinks {
+  display: flex;
+  flex-direction: column;
+  
+}
