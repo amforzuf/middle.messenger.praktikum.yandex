@@ -1,7 +1,6 @@
 import Handlebars from 'handlebars';
 import { Input } from '../../components/Forms/Input';
 import { UserInfo } from '../../components/Chat/UserInfo';
-import { ChatListItem } from '../../components/Chat/ChatListItem';
 import ChatList from '../../components/Chat/ChatList';
 import './style.scss'
 import image from '../../static/images/avatar.png'

@@ -1,5 +1,3 @@
-import Handlebars from 'handlebars';
-
 export const tmpl = `
   <section class="profile">
     <h1>Смена пароля</h1>

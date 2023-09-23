@@ -5,11 +5,7 @@ import { Avatar } from '../../components/Avatar';
 import { Popup } from '../../components/Popup';
 import './style.scss'
 import image from '../../static/images/avatar.png'
-
 import { tmpl } from './profile.tmpl';
-
-
-
 
 export const Profile = () => {
   return Handlebars.compile(tmpl)({
