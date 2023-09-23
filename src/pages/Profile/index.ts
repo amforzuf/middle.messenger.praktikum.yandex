@@ -12,20 +12,6 @@ import { tmpl } from './profile.tmpl';
 
 
 export const Profile = () => {
-  // const passwordPopup = document.querySelector<HTMLElement>('.popup')!;
-  // const passwordChangeButton = document.getElementById('changePasswordButton')
-  // if(passwordChangeButton)
-  // passwordChangeButton.addEventListener("click", function onClick() {
-
-  //   if(passwordPopup) {
-  //     console.log('dsdsd');
-
-  //     passwordPopup.style.display = "flex"
-  //   }
-  //   else {
-  //     console.log('else');
-  //   }
-  // });
   return Handlebars.compile(tmpl)({
     profileAvatar: Avatar({avatarImg: image, username: 'Просто Вячеслав'}),
     firstNameInput: Input({class: '', placeholder: 'Имя', name: 'first_name'}),
