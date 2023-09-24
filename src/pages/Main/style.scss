@@ -7,10 +7,21 @@
   font-weight: 600;
   line-height: 150%;
   color: var(--text-color);
+  &:hover {
+    color: grey;
+  }
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  list-style-type: none;
 }
 
 .mainLinks {
   display: flex;
-  flex-direction: column;
-  
 }
