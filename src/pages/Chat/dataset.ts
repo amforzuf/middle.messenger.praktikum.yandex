@@ -1,7 +1,7 @@
 interface ChatLitsItems {
-  items: ChatListProps[]
+  // eslint-disable-next-line no-use-before-define
+  items: ChatListProps[];
 }
-
 interface ChatListProps {
   imgSrc?: string;
   letters?: string;
@@ -19,7 +19,7 @@ export const data: ChatLitsItems = {
       addressee: 'Олег Монгол',
       date: '14:40',
       messege: 'Все-таки соска твоя чики-пики',
-      you: ':'
+      you: ':',
     },
     {
       letters: 'ЛЯ',
@@ -42,5 +42,5 @@ export const data: ChatLitsItems = {
       messege: 'Спасибо, что поднял',
       counter: '5',
     },
-  ]
-}
+  ],
+};

@@ -1,5 +1,5 @@
 export const tmpl = `
-    <form class='loginPage'>
+    <form class='login-page'>
       {{{formTitle}}}
       {{{loginInput}}}
       {{{passwordInput}}}

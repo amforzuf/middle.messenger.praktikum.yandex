@@ -1,20 +1,20 @@
 export const tmpl = `
-  <div class="chatListItem">
-    <div class='userInfoAvatar'>
+  <div class="chat-list-item">
+    <div class='user-info-avatar'>
       {{#if imgSrc}}
         <img src="{{imgSrc}}" alt=""/>
       {{else}}
-        <div class='noAvatar'>
+        <div class='no-avatar'>
           <p>{{letters}}</p>
         </div>
       {{/if}}
     </div>
-    <div class='chatInfo'>
-      <div class='chatInfoMeta'>
+    <div class='chat-info'>
+      <div class='chat-info-meta'>
         <p class="addressee">{{addressee}}</p>
         <p class="date">{{date}}</p>
       </div>
-      <div class='chatInfoData'>
+      <div class='chat-info-data'>
         {{#if you}}
           <p class="you">Вы{{you}}</p>
           <p class="messege">{{messege}}</p>

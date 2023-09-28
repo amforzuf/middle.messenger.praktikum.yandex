@@ -1,17 +1,20 @@
-.chatListItem {
+.chat-list-item {
   display: flex;
   justify-content: flex-start;
   width: 420px;
   border-radius: 0 10px 10px 0;
   padding: 10px 0;
   cursor: pointer;
+
   &:hover {
     background-color: #2A2933
   }
-  .userInfoAvatar {
+
+  .user-info-avatar {
     margin-left: 40px;
     margin-right: 15px;
-    .noAvatar {
+
+    .no-avatar {
       width: 40px;
       height: 40px;
       border-radius: 20px;
@@ -19,42 +22,49 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       p {
         font-size: 14px;
       }
     }
   }
-  .chatInfo {
+
+  .chat-info {
     margin-right: 10px;
     display: flex;
     gap: 3px;
     margin-left: 0;
-
     flex-direction: column;
-    .chatInfoMeta {
+
+    .chat-info-meta {
       display: flex;
       width: 275px;
       justify-content: space-between;
       margin: 0;
+
       .addressee {
         font-size: 14px;
         font-weight: 400;
       }
+
       .date {
         font-size: 12px;
         font-weight: 200;
         margin-top: 1px;
       }
     }
-    .chatInfoData {
+
+    .chat-info-data {
       display: flex;
       width: 100%;
       justify-content: flex-start;
+
       .you {
         font-size: 14px;
         font-weight: 500;
         margin-right: 10px;
       }
+
       .messege {
         font-size: 14px;
         font-weight: 200;
@@ -64,6 +74,7 @@
       }
     }
   }
+
   .counter {
     border-radius: 7px;
     width: auto;
@@ -72,6 +83,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--violet);
+
     p {
       width: 100%;
       text-align: center;

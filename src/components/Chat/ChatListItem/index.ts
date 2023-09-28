@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 import { tmpl } from './chatListItem.tmpl';
-import './style.scss'
+import './style.scss';
 
 interface ChatListProps {
   imgSrc?: string;

@@ -1,12 +1,12 @@
 import Handlebars from 'handlebars';
 import { tmpl } from './hint.tmpl';
-import './style.scss'
+import './style.scss';
 
 interface HintProps {
   hintText?: string;
   to?: string;
   hintLinkText: string;
-  imgSrc?: any;
+  imgSrc?: unknown;
   name: string;
 }
 

@@ -1,5 +1,5 @@
 export const tmpl = `
-  <form class='registrationPage'>
+  <form class='registration-page'>
     {{{formTitle}}}
     {{{firstNameInput}}}
     {{{secondNameInput}}}

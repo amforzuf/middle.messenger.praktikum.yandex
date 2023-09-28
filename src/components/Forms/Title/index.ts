@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 
 import { tmpl } from './title.tmpl';
-import './style.scss'
+import './style.scss';
 
 interface LinkProps {
   title: string;

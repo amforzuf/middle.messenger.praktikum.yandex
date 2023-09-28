@@ -1,1 +1,1 @@
-export const tmpl = `<p class="formTitle">{{title}}</p>`;
+export const tmpl = `<p class="form-title">{{title}}</p>`;

@@ -2,7 +2,7 @@ import Handlebars from 'handlebars';
 
 import { tmpl } from './errorPage.tmpl';
 
-import './style.scss'
+import './style.scss';
 
 interface ErrorPageProps {
   errorCodeText: string;

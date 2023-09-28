@@ -1,4 +1,3 @@
-export const tmpl =
-`<div class='{{{class}}}'>
+export const tmpl = `<div class='{{{class}}}'>
  {{{children}}}
 </div>`;

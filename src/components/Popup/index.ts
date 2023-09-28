@@ -2,11 +2,11 @@ import Handlebars from 'handlebars';
 
 import { tmpl } from './popup.tmpl';
 
-import './style.scss'
+import './style.scss';
 
 interface PopupProps {
   class: string;
-  children: any;
+  children: HTMLElement;
 }
 
 export const Popup = (props: PopupProps) => {

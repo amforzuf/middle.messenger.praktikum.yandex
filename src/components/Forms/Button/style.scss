@@ -1,6 +1,6 @@
-@import './../../../globalstyles.scss';
+@import './../../../globalstyles';
 
-.formButton {
+.form-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,6 +15,7 @@
   font-weight: 400;
   box-sizing: border-box;
   cursor: pointer;
+
   p, a {
     margin-top: 3px;
     width: 100%;
@@ -26,40 +27,48 @@
     align-items: center;
     justify-content: center;
   }
+
   &:hover {
     transition: .3s background;
     background-color: var(--violet);
   }
+
   &:hover p, a {
     transition: .3s color;
     color: var(--text-color);
   }
 }
 
-.profileSaveButton {
+.profile-save-button {
   background-color: var(--text-color);
+
   p {
     color: var(--violet-dark);
   }
+
   &:hover {
     transition: .3s background;
     background-color: var(--violet);
   }
+
   &:hover p {
     transition: .3s color;
     color: var(--text-color);
   }
 }
 
-.profileCancelButton {
+.profile-cancel-button {
   background-color: var(--violet);
+
   a {
     color: var(--text-color);
   }
+
   &:hover {
     transition: .3s background;
     background-color: var(--text-color);
   }
+
   &:hover a {
     transition: .3s color;
     color: var(--violet-dark);

@@ -1,6 +1,6 @@
-@import './../../../globalstyles.scss';
+@import './../../../globalstyles';
 
-.formInput {
+.form-input {
   width: 100%;
   margin-bottom: 16px;
   height: 40px;
@@ -12,23 +12,29 @@
   font-weight: 400;
   color: var(--text-color);
   box-sizing: border-box;
+
   &:focus {
     box-shadow: 0 0 4px var(--text-color);
     transition: .3s box-shadow;
     outline: none;
   }
+
   &::-webkit-input-placeholder {
     transform: translateY(1px);
   }
+
   &:-moz-placeholder {
     transform: translateY(1px);
   }
+
   &::-moz-placeholder {
     transform: translateY(1px);
   }
+
   &:-ms-input-placeholder {
     transform: translateY(1px);
   }
+
   &::-ms-input-placeholder {
     transform: translateY(1px);
   }
@@ -36,8 +42,4 @@
   &::placeholder {
     transform: translateY(1px);
   }
-}
-
-.profileInput {
-  background: var(--violet);
 }

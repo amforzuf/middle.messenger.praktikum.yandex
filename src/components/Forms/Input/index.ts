@@ -2,7 +2,7 @@ import Handlebars from 'handlebars';
 
 import { tmpl } from './input.tmpl';
 
-import './style.scss'
+import './style.scss';
 
 interface InputProps {
   class: string;

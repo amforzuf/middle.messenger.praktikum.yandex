@@ -1,7 +1,7 @@
 export const tmpl = `
-  <section class="errorPage">
-    <h3 class="errorText">{{errorCodeText}}</h3>
-    <h3 class="errorText">{{errorDescription}}</h3>
-    <button class="errorBtn"><a class="errorLink" href="login">Вернуться</a></button>
+  <section class="error-page">
+    <h3 class="error-text">{{errorCodeText}}</h3>
+    <h3 class="error-text">{{errorDescription}}</h3>
+    <button class="error-btn"><a class="errorLink" href="login">Вернуться</a></button>
   </section>
 `;

@@ -1,12 +1,13 @@
-@import './../../globalstyles.scss';
+@import './../../globalstyles';
 
-.mainLink {
+.main-link {
   margin-bottom: 24px;
   margin-top: 12px;
   font-size: 24px;
   font-weight: 600;
   line-height: 150%;
   color: var(--text-color);
+
   &:hover {
     color: grey;
   }
@@ -22,6 +23,6 @@ ul{
   list-style-type: none;
 }
 
-.mainLinks {
+.main-links {
   display: flex;
 }

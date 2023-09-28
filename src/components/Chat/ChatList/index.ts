@@ -1,7 +1,8 @@
-import { ChatListItem } from "../ChatListItem";
+import { ChatListItem } from '../ChatListItem';
 
 interface ChatLitsItems {
-  items: ChatListProps[]
+  // eslint-disable-next-line no-use-before-define
+  items: ChatListProps[];
 }
 
 interface ChatListProps {
@@ -15,8 +16,10 @@ interface ChatListProps {
 }
 
 export default function ChatList(data: ChatLitsItems) {
-    const chatList = data.items.map(item => {
-        return ChatListItem(item)
-    }).join('');
-    return chatList;
+  const chatList = data.items
+    .map((item) => {
+      return ChatListItem(item);
+    })
+    .join('');
+  return chatList;
 }

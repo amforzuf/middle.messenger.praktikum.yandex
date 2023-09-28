@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 import { tmpl } from './userInfo.tmpl';
-import './style.scss'
+import './style.scss';
 
 interface UserInfoProps {
   avatarImg: string;
