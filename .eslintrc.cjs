@@ -8,7 +8,6 @@ module.exports = {
     'airbnb',
     'plugin:prettier/recommended',
     'eslint:recommended',
-    // Базовые правила для TypeScript
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'prettier',

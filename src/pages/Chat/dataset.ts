@@ -1,3 +1,8 @@
+/* eslint-disable object-shorthand */
+import UserInfo from '../../components/Chat/UserInfo';
+import avatarImg from '../../static/images/avatar.png';
+import ChatList from '../../components/Chat/ChatList';
+
 interface ChatLitsItems {
   // eslint-disable-next-line no-use-before-define
   items: ChatListProps[];
@@ -44,3 +49,10 @@ export const data: ChatLitsItems = {
     },
   ],
 };
+
+export const chatList = new ChatList(data);
+
+export const userInfo = new UserInfo('div', {
+  avatarImg: avatarImg,
+  username: 'Просто Вячеслав',
+});

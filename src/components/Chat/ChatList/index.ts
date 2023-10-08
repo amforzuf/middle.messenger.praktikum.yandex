@@ -1,6 +1,6 @@
-import { ChatListItem } from '../ChatListItem';
+import ChatListItem from '../ChatListItem';
 
-interface ChatLitsItems {
+interface ChatListItems {
   // eslint-disable-next-line no-use-before-define
   items: ChatListProps[];
 }
@@ -11,15 +11,26 @@ interface ChatListProps {
   addressee: string;
   date: string;
   you?: string;
-  messege: string;
   counter?: string;
+  messege: string;
 }
 
-export default function ChatList(data: ChatLitsItems) {
-  const chatList = data.items
-    .map((item) => {
-      return ChatListItem(item);
-    })
-    .join('');
-  return chatList;
+export default class ChatList {
+  private data: ChatListItems;
+
+  constructor(data: ChatListItems) {
+    this.data = data;
+  }
+
+  render(): string {
+    const chatList = this.data.items
+      // eslint-disable-next-line array-callback-return
+      .map((item) => {
+        // eslint-disable-next-line no-new
+        new ChatListItem('div', item);
+      })
+      .join('');
+
+    return chatList;
+  }
 }

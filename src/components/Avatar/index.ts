@@ -1,14 +1,10 @@
-import Handlebars from 'handlebars';
+import { AvatarProps } from './types';
+import { Block } from '../../utils/Block';
 
 import tmpl from './avatar.tmpl';
 
-interface AvatarProps {
-  avatarImg?: unknown;
-  username: string;
-  class?: string;
+export default class Avatar extends Block<AvatarProps> {
+  render() {
+    return this.compile(tmpl, this.props);
+  }
 }
-
-// eslint-disable-next-line import/prefer-default-export
-export const Avatar = (props: AvatarProps) => {
-  return Handlebars.compile(tmpl)(props);
-};

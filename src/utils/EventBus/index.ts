@@ -1,15 +1,13 @@
-import { Callback, EventBusListeners } from './types';
+import { Event, Callback } from './types';
 
-type Event = string;
-
-export default class EventBus {
-  private readonly listeners: EventBusListeners = {};
+class EventBus {
+  private readonly listeners: Record<Event, Callback[]> = {};
 
   constructor() {
     this.listeners = {};
   }
 
-  public on(event: Event, callback: Callback) {
+  on(event: Event, callback: Callback) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -17,7 +15,7 @@ export default class EventBus {
     this.listeners[event].push(callback);
   }
 
-  public off(event: Event, callback: Callback) {
+  off(event: Event, callback: Callback) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
@@ -25,7 +23,7 @@ export default class EventBus {
     this.listeners[event] = this.listeners[event].filter((listener) => listener !== callback);
   }
 
-  public emit(event: Event, ...args: unknown[]) {
+  emit(event: Event, ...args: unknown[]) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
@@ -35,3 +33,5 @@ export default class EventBus {
     });
   }
 }
+
+export default EventBus;

@@ -1,8 +1,8 @@
-import Handlebars from 'handlebars';
 import { tmpl } from './chatListItem.tmpl';
+import Block from '../../../utils/Block';
 import './style.scss';
 
-interface ChatListProps {
+type ChatListProps = {
   imgSrc?: string;
   letters?: string;
   addressee: string;
@@ -10,8 +10,10 @@ interface ChatListProps {
   you?: string;
   messege: string;
   counter?: string;
-}
-
-export const ChatListItem = (props: ChatListProps) => {
-  return Handlebars.compile(tmpl)(props);
 };
+
+export default class ChatListItem extends Block<ChatListProps> {
+  render() {
+    return this._compile(tmpl, this._props);
+  }
+}

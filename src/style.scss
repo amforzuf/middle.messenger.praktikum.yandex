@@ -1,4 +1,6 @@
 @import 'globalstyles';
+@import 'pages/Login/style.scss';
+@import 'pages/Profile/style.scss';
 
 *, html {
   box-sizing: border-box;
@@ -73,4 +75,20 @@ a {
 
 .clickable-element {
   cursor: pointer;
+}
+
+.form-title {
+  margin-bottom: 24px;
+  margin-top: 12px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.tooltip {
+  margin-top: -12px;
+  margin-bottom: 5px;
+  padding: 0;
+  color: red;
+  font-size: 12px;
 }

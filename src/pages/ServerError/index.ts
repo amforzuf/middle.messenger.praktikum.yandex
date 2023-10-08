@@ -1,5 +1,6 @@
-import { ErrorPage } from '../../components/ErrorPage';
+import ServerErrorCompiler from './serverError';
 
-export const ServerError = () => {
-  return ErrorPage({ errorCodeText: '500', errorDescription: 'Мы уже фиксим' });
-};
+export const ServerError = new ServerErrorCompiler({
+  statusCode: '500',
+  comment: 'Мы уже фиксим',
+});

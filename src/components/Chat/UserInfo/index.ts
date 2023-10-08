@@ -1,12 +1,10 @@
-import Handlebars from 'handlebars';
 import { tmpl } from './userInfo.tmpl';
 import './style.scss';
+import Block from '../../../utils/Block';
+import { UserInfoProps } from './types';
 
-interface UserInfoProps {
-  avatarImg: string;
-  username: string;
+export default class UserInfo extends Block<UserInfoProps> {
+  render() {
+    return this._compile(tmpl, this._props);
+  }
 }
-
-export const UserInfo = (props: UserInfoProps) => {
-  return Handlebars.compile(tmpl)(props);
-};

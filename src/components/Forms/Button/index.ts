@@ -1,15 +1,14 @@
-import Handlebars from 'handlebars';
+import { Block } from '../../../utils/Block';
 import { tmpl } from './button.tmpl';
+import { ButtonProps } from './types';
 import './style.scss';
 
-interface ButtonProps {
-  class: string;
-  buttonTitle: string;
-  name: string;
-  id?: string;
-  to?: string;
-}
+export class Button extends Block<ButtonProps> {
+  constructor(props: ButtonProps) {
+    super(props, 'div');
+  }
 
-export const Button = (props: ButtonProps) => {
-  return Handlebars.compile(tmpl)(props);
-};
+  render() {
+    return this.compile(tmpl, this.props);
+  }
+}

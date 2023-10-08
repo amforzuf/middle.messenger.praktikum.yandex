@@ -1,8 +1,3 @@
-import Handlebars from 'handlebars';
-import './style.scss';
+import { MainCompiler } from './main';
 
-import { tmpl } from './main.tmpl';
-
-export const Main = () => {
-  return Handlebars.compile(tmpl)({});
-};
+export const Main = new MainCompiler({});

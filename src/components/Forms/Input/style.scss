@@ -1,7 +1,7 @@
 @import './../../../globalstyles';
 
 .form-input {
-  width: 100%;
+  width: 420px;
   margin-bottom: 16px;
   height: 40px;
   padding: 0 20px;
@@ -42,4 +42,9 @@
   &::placeholder {
     transform: translateY(1px);
   }
+}
+
+.input-error-message {
+  color: red;
+  font-size: 20px;
 }
