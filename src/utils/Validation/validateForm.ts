@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-case-declarations */
 import {
   validateFirstName,
@@ -18,6 +19,8 @@ interface FormData {
   phone?: string;
   message?: string;
   confirm_password?: string;
+  new_password?: string;
+  confirm_new_password?: string;
 }
 
 export const handleSubmit = (event: Event, fieldsToCheck: string[]) => {
@@ -73,16 +76,37 @@ export const handleSubmit = (event: Event, fieldsToCheck: string[]) => {
         }
         break;
 
+      case 'new_password':
+        const newPasswordInput = document.getElementById('new_password') as HTMLInputElement;
+        if (validatePassword(newPasswordInput.value)) {
+          formData.new_password = newPasswordInput.value;
+        } else {
+          invalidFields.push('New Password');
+        }
+        break;
+
       case 'confirm_password':
         const confirmPasswordInput = document.getElementById(
           'confirm_password'
         ) as HTMLInputElement;
-        const confirmPasswordValue = confirmPasswordInput.value; // Store the confirm_password value
+        const confirmPasswordValue = confirmPasswordInput.value;
         if (confirmPasswordValue === passwordInput!.value) {
           formData.confirm_password = confirmPasswordValue;
         } else {
           invalidFields.push('Confirm Password');
         }
+        break;
+
+        case 'confirm_new_password':
+          const confirmNewPasswordInput = document.getElementById(
+            'confirm_new_password'
+          ) as HTMLInputElement;
+          const confirmNewPasswordValue = confirmNewPasswordInput.value;
+          if (confirmNewPasswordValue === newPasswordInput!.value) {
+            formData.confirm_new_password = confirmNewPasswordValue;
+          } else {
+            invalidFields.push('Confirm new password');
+          }
         break;
 
       case 'phone':

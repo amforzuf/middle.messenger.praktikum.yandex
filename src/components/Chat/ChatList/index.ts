@@ -1,36 +1,29 @@
 import ChatListItem from '../ChatListItem';
+import { Block } from '../../../utils/Block';
+import { tmpl } from './chatList.tmpl';
+import { dataSet } from './dataSet';
 
-interface ChatListItems {
-  // eslint-disable-next-line no-use-before-define
-  items: ChatListProps[];
-}
+export default class ChatList extends Block {
+  private chatListItems: ChatListItem[] = [];
 
-interface ChatListProps {
-  imgSrc?: string;
-  letters?: string;
-  addressee: string;
-  date: string;
-  you?: string;
-  counter?: string;
-  messege: string;
-}
-
-export default class ChatList {
-  private data: ChatListItems;
-
-  constructor(data: ChatListItems) {
-    this.data = data;
+  constructor() {
+    super({}, 'div');
   }
 
-  render(): string {
-    const chatList = this.data.items
-      // eslint-disable-next-line array-callback-return
-      .map((item) => {
-        // eslint-disable-next-line no-new
-        new ChatListItem('div', item);
-      })
-      .join('');
+  init() {
+    this.chatListItems = dataSet.items.map((item) => {
+      return new ChatListItem({
+        addressee: item.addressee,
+        date: item.date,
+        id: item.id,
+        imgSrc: item.imgSrc,
+        letters: item.letters,
+        messege: item.messege,
+      });
+    });
+  }
 
-    return chatList;
+  render() {
+    return this.compile(tmpl, this.props);
   }
 }

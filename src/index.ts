@@ -6,6 +6,8 @@ import { ServerError } from './pages/ServerError';
 import { Login } from './pages/Login';
 import { Registration } from './pages/Registration';
 import { Profile } from './pages/Profile';
+import { ChangePassword } from './pages/ChangePassword';
+import { Chat } from './pages/Chat';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('#app')!;
@@ -21,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return Registration;
       case '/profile':
         return Profile;
+      case '/change_password':
+        return ChangePassword;
+      case '/chat':
+        return Chat;
       default:
         return NotFound;
     }

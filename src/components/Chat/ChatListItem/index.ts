@@ -1,19 +1,15 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { tmpl } from './chatListItem.tmpl';
-import Block from '../../../utils/Block';
+import { Block } from '../../../utils/Block';
 import './style.scss';
+import { ChatListItemProps } from './types';
 
-type ChatListProps = {
-  imgSrc?: string;
-  letters?: string;
-  addressee: string;
-  date: string;
-  you?: string;
-  messege: string;
-  counter?: string;
-};
+export default class ChatListItem extends Block<ChatListItemProps> {
+  constructor(props: ChatListItemProps) {
+    super(props, 'div');
+  }
 
-export default class ChatListItem extends Block<ChatListProps> {
   render() {
-    return this._compile(tmpl, this._props);
+    return this.compile(tmpl, this.props);
   }
 }
