@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 import { NotFound } from './pages/NotFound';
 import './style.scss';
 import { Block } from './utils/Block';
@@ -12,10 +13,19 @@ import { Chat } from './pages/Chat';
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('#app')!;
   const getPage = () => {
-    switch (window.location.pathname) {
+    const path = window.location.pathname;
+    // const pathSegments = window.location.pathname.split('/');
+    // if (pathSegments.length === 3 && pathSegments[1] === 'chat') {
+    //   const chatId = pathSegments[2];
+    //   return Chat;
+    // }
+    // if (window.location.pathname === 'chat') {
+    //   return Chat;
+    // }
+    switch (path) {
       case '/':
         return Main;
-      case '/500':
+      case '/serverError':
         return ServerError;
       case '/login':
         return Login;
@@ -30,6 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
       default:
         return NotFound;
     }
+    // if (path === '/') {
+    //   return Main;
+    // } else if (path === 'serverError') {
+    //   return ServerError;
+    // } else if (path === 'login') {
+    //   return Login;
+    // } else if (path === 'registration') {
+    //   return Registration;
+    // } else if (path === 'profile') {
+    //   return Profile;
+    // } else if (path === 'change_password') {
+    //   return ChangePassword;
+    // } else if (path.includes('chat')) {
+    //   return ChangePassword;
+    // }
+    // return NotFound;
   };
 
   const page: Block<object> = getPage();

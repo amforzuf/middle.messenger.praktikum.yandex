@@ -3,7 +3,6 @@ import { tmpl } from './userInfo.tmpl';
 import Avatar from '../../Avatar';
 import './style.scss';
 import { Block } from '../../../utils/Block';
-import { UserInfoProps } from './types';
 import avatarImg from '../../../static/images/avatar.png';
 
 export default class UserInfo extends Block {

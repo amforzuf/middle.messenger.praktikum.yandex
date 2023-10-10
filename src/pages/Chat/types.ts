@@ -1,7 +1,17 @@
-// import UserInfo from '../../components/Chat/UserInfo';
-// import ChatList from '../../components/Chat/ChatList';
+interface ChatListProps {
+  id: number;
+  imgSrc?: string;
+  letters?: string;
+  addressee: string;
+  date: string;
+  you?: string;
+  messege: string;
+  counter?: string;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onClick?: Function;
+}
 
-// export type ChatProps = {
-//   userInfo: UserInfo;
-//   chatList: unknown;
-// };
+export type ChatProps = {
+  id?: number;
+  chatListItems?: ChatListProps[];
+};

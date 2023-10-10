@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 interface ChatLitsItems {
   // eslint-disable-next-line no-use-before-define
   items: ChatListProps[];
@@ -11,6 +12,7 @@ interface ChatListProps {
   you?: string;
   messege: string;
   counter?: string;
+  onClick?: Function;
 }
 
 export const dataSet: ChatLitsItems = {
