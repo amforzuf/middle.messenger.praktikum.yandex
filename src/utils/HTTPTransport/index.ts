@@ -1,11 +1,6 @@
-const REQUEST_METHODS = {
-  GET: 'GET',
-  POST: 'POST',
-  PUT: 'PUT',
-  DELETE: 'DELETE',
-};
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { METHODS, HTTPMethod } from './types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function convertToQueryString(data: Record<string, any>) {
   let queryString = '?';
   for (const key in data) {
@@ -18,33 +13,33 @@ function convertToQueryString(data: Record<string, any>) {
   return queryString;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type HTTPMethod = (url: string, options?: Record<string, any>) => Promise<unknown>;
-
 export default class HTTPTransport {
   public get: HTTPMethod = (url, options = {}) => {
-    return this.makeRequest(url, { ...options, method: REQUEST_METHODS.GET }, options.timeout);
+    return this.makeRequest(url, { ...options, method: METHODS.GET }, options.timeout);
   };
 
   public post: HTTPMethod = (url, options = {}) => {
-    return this.makeRequest(url, { ...options, method: REQUEST_METHODS.POST }, options.timeout);
+    return this.makeRequest(url, { ...options, method: METHODS.POST }, options.timeout);
   };
 
   public put: HTTPMethod = (url, options = {}) => {
-    return this.makeRequest(url, { ...options, method: REQUEST_METHODS.PUT }, options.timeout);
+    return this.makeRequest(url, { ...options, method: METHODS.PUT }, options.timeout);
+  };
+
+  public patch: HTTPMethod = (url, options = {}) => {
+    return this.makeRequest(url, { ...options, method: METHODS.PATCH }, options.timeout);
   };
 
   public delete: HTTPMethod = (url, options = {}) => {
-    return this.makeRequest(url, { ...options, method: REQUEST_METHODS.DELETE }, options.timeout);
+    return this.makeRequest(url, { ...options, method: METHODS.DELETE }, options.timeout);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public makeRequest = (url: string, options: Record<string, any>, timeout = 5000) => {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       let requestData;
 
-      if (options.method === REQUEST_METHODS.GET) {
+      if (options.method === METHODS.GET) {
         requestData = convertToQueryString(options.data);
         url += requestData;
       }
@@ -65,7 +60,7 @@ export default class HTTPTransport {
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
 
-      if (options.method === REQUEST_METHODS.GET || !requestData) {
+      if (options.method === METHODS.GET || !requestData) {
         xhr.send();
       } else {
         xhr.send(requestData);

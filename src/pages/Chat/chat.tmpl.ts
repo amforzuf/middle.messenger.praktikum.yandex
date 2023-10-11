@@ -5,7 +5,7 @@ export const tmpl = `
         {{{search}}}
         <div class='chat-list'>
           {{#each chatListItems}}
-            <div class="chat-list-item">
+            <div class="chat-list-item {{class}}" id={{id}}>
               <div class='user-info-avatar'>
                 {{#if imgSrc}}
                   <img src="{{imgSrc}}" alt=""/>

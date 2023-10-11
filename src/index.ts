@@ -14,14 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('#app')!;
   const getPage = () => {
     const path = window.location.pathname;
-    // const pathSegments = window.location.pathname.split('/');
-    // if (pathSegments.length === 3 && pathSegments[1] === 'chat') {
-    //   const chatId = pathSegments[2];
-    //   return Chat;
-    // }
-    // if (window.location.pathname === 'chat') {
-    //   return Chat;
-    // }
     switch (path) {
       case '/':
         return Main;
@@ -40,22 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
       default:
         return NotFound;
     }
-    // if (path === '/') {
-    //   return Main;
-    // } else if (path === 'serverError') {
-    //   return ServerError;
-    // } else if (path === 'login') {
-    //   return Login;
-    // } else if (path === 'registration') {
-    //   return Registration;
-    // } else if (path === 'profile') {
-    //   return Profile;
-    // } else if (path === 'change_password') {
-    //   return ChangePassword;
-    // } else if (path.includes('chat')) {
-    //   return ChangePassword;
-    // }
-    // return NotFound;
   };
 
   const page: Block<object> = getPage();

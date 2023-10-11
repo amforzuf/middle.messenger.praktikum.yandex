@@ -13,6 +13,7 @@ interface ChatListProps {
   messege: string;
   counter?: string;
   onClick?: Function;
+  class?: string;
 }
 
 export const dataSet: ChatLitsItems = {
@@ -48,6 +49,7 @@ export const dataSet: ChatLitsItems = {
       date: '17.09.2023',
       messege: 'Спасибо, что поднял',
       counter: '5',
+      class: 'active',
     },
   ],
 };

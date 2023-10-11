@@ -1,4 +1,5 @@
-export type HTTPMethod = (url: string, options?: Record<string, unknown>) => Promise<unknown>;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export type HTTPMethod = (url: string, options?: Record<string, any>) => Promise<unknown>;
 
 export enum METHODS {
   GET = 'GET',
@@ -7,10 +8,3 @@ export enum METHODS {
   PATCH = 'PATCH',
   DELETE = 'DELETE',
 }
-
-export type MethodOptions = {
-  method: METHODS;
-  data: string | Record<string, string>;
-  headers: Record<string, string>;
-  timeout: number;
-};

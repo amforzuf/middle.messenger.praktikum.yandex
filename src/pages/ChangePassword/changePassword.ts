@@ -75,32 +75,3 @@ export class ChangePasswordCompiler extends Block {
     }
   }
 }
-
-// const avatar = new Avatar('div', {
-//   avatarImg: `${image}`,
-//   username: 'Просто Вячеслав',
-// });
-
-// export const ChangePasswordCompiler = () => {
-//   return Handlebars.compile(tmpl)({
-//     profileAvatar: avatar,
-//     oldPasswordInput: Input({ class: '', placeholder: 'Старый пароль', name: 'oldPassword' }),
-//     newPasswordInput: Input({ class: '', placeholder: 'Новый пароль', name: 'newPassword' }),
-//     newPasswordConfirmInput: Input({
-//       class: '',
-//       placeholder: 'Подтверждение пароля',
-//       name: 'newPassword',
-//     }),
-//     saveButton: Button({
-//       class: 'profile-save-button',
-//       buttonTitle: 'Сохранить',
-//       name: 'change_password',
-//     }),
-//     cancelBatton: Button({
-//       class: 'profile-cancel-button',
-//       buttonTitle: 'Отменить',
-//       name: 'cancel',
-//       to: 'profile',
-//     }),
-//   });
-// };
