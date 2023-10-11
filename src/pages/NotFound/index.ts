@@ -1,5 +1,6 @@
-import { ErrorPage } from '../../components/ErrorPage';
+import NotFoundCompiler from './notFound';
 
-export const NotFound = () => {
-  return ErrorPage({errorCodeText: '404', errorDescription: 'Страница не найдена'});
-};
+export const NotFound = new NotFoundCompiler({
+  statusCode: '404',
+  comment: 'Страница не найдена',
+});

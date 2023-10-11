@@ -1,9 +1,6 @@
 export const tmpl = `
-  <div class="userInfo">
-    <div class="userInfoAvatar">
-      <img src="{{{avatarImg}}}" alt="">
-      <p>{{username}}</p>
-    </div>
+  <div class="user-info">
+    {{{avatar}}}
     <a href="profile"></a>
   </div>
 `;

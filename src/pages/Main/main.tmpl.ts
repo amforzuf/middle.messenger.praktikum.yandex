@@ -1,10 +1,13 @@
 export const tmpl = `
-  <div class='mainLinks'>
-    <a class='mainLink' href="login">Вход</a>
-    <a class="mainLink" href="registration">Регистрация</a>
-    <a class="mainLink" href="profile">Профиль</a>
-    <a class="mainLink" href="chat">Чат</a>
-    <a class="mainLink" href="notFoundError">404</a>
-    <a class="mainLink" href="serverError">500</a>
-  </div>
+  <nav class='main-links'>
+    <ul>
+      <li><a class='main-link' href='login'>Вход</a></li>
+      <li><a class='main-link' href='registration'>Регистрация</a></li>
+      <li><a class='main-link' href='profile'>Профиль</a></li>
+      <li><a class='main-link' href='change_password'>Сменить пароль</a></li>
+      <li><a class='main-link' href='chat'>Чат</a></li>
+      <li><a class='main-link' href='notFoundError'>404</a></li>
+      <li><a class='main-link' href='serverError'>500</a></li>
+    </ul>
+  </nav>
 `;

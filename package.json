@@ -1,25 +1,43 @@
 {
-  "name": "practicum-mfd-sprint-1",
-  "private": true,
-  "version": "0.0.0",
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "start": "npm run build  && node ./server.js",
     "dev": "vite --open",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "npx eslint --ext .js,.ts,.tsx,.jsx src && npx stylelint \"**/*.scss\" && npx tsc --noEmit",
+    "lint:fix": "npx eslint --ext .js,.ts,.tsx,.jsx src --fix && npx stylelint \"**/*.scss\" --fix"
   },
   "devDependencies": {
+    "@types/uuid": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.3",
+    "sass": "^1.68.0",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint-scss": "^5.2.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vite-plugin-handlebars": "^1.6.0"
+    "vite-plugin-handlebars": "^1.6.0",
+    "eslint-config-prettier": "^8.8.0"
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb": "^19.0.4",
     "express": "^4.18.2",
     "handlebars": "^4.7.8",
-    "sass": "^1.68.0"
+    "prettier": "^3.0.3",
+    "sass": "^1.68.0",
+    "stylelint": "^15.10.3",
+    "stylelint-scss": "^5.2.1",
+    "uuid": "^9.0.1"
   },
   "engines": {
     "node": ">=12.0.0"

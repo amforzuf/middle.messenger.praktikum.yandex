@@ -1,15 +1,14 @@
-import Handlebars from 'handlebars';
+import { Block } from '../../../utils/Block';
 import { tmpl } from './hint.tmpl';
-import './style.scss'
+import './style.scss';
+import { HintProps } from './types';
 
-interface HintProps {
-  hintText?: string;
-  to?: string;
-  hintLinkText: string;
-  imgSrc?: any;
-  name: string;
+export class Hint extends Block<HintProps> {
+  constructor(props: HintProps) {
+    super(props, 'div');
+  }
+
+  render() {
+    return this.compile(tmpl, this.props);
+  }
 }
-
-export const Hint = (props: HintProps) => {
-  return Handlebars.compile(tmpl)(props);
-};
