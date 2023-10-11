@@ -42,6 +42,7 @@
   &:disabled {
     cursor: not-allowed;
     background-color: var(--violet);
+
     p {
       color: var(--violet-dark);
     }

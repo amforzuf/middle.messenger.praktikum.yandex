@@ -134,7 +134,7 @@ export const handleSubmit = (event: Event, fieldsToCheck: string[]) => {
   });
 
   if (invalidFields.length === 0) {
-    console.log('Form data:', formData);
+    console.log('formData:', formData);
   } else {
     console.log('Invalid fields:', invalidFields);
   }

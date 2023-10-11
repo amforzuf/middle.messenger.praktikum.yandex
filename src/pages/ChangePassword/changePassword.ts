@@ -1,10 +1,8 @@
 import { Input } from '../../components/Forms/Input';
 import { Block } from '../../utils/Block';
-import Avatar from '../../components/Avatar';
 import { tmpl } from './changePassword.tmpl';
 import { Button } from '../../components/Forms/Button';
 import { handleSubmit } from '../../utils/Validation/validateForm';
-import avataerImg from '../../static/images/avatar.png';
 
 export class ChangePasswordCompiler extends Block {
   constructor() {

@@ -12,7 +12,7 @@ type Meta = {
   props: object;
 };
 
-export class Block<P extends Record<string, unknown> = any> {
+export class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -188,18 +188,6 @@ export class Block<P extends Record<string, unknown> = any> {
   get element() {
     return this._element;
   }
-
-  setProps = (nextProps: P) => {
-    if (!nextProps) {
-      return;
-    }
-
-    this.props = {
-      ...this.props,
-      ...nextProps,
-    };
-    this.eventBus().emit(Block.EVENTS.FLOW_CDU, this.props);
-  };
 
   _makePropsProxy(props: any) {
     const self = this;
