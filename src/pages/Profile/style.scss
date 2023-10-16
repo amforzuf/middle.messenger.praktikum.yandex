@@ -6,35 +6,47 @@
   justify-content: flex-start;
 
   h1 {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 200;
-    margin: 0 0 40px 0;
+    margin: 0 0 40px;
   }
 
-  .profileTopContainer {
+  .profile-top-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0 40px 0;
+    margin: 0 0 40px;
 
-    .avatarContainer {
+    .avatar-container {
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       gap: 10px;
       margin: 0;
-      .noAvatar {
-        
-      }
+
       img {
         width: 70px;
       }
+
       p {
         font-size: 14px;
       }
     }
 
-    .changeBtns {
+    .profile-avatar {
+      margin-left: -75px;
+
+      img {
+        width: 70px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .change-btns {
       display: flex;
       flex-direction: column;
       gap: 7px;
@@ -48,6 +60,7 @@
         text-align: start;
         margin: 0;
         cursor: pointer;
+
         &:hover {
             color: #635E66;
         }
@@ -55,7 +68,8 @@
 
     }
   }
-  .saveContainer {
+
+  .save-container {
     display: flex;
     justify-content: space-between;
     width: 100%;

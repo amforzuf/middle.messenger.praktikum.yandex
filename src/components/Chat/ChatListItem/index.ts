@@ -1,17 +1,15 @@
-import Handlebars from 'handlebars';
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { tmpl } from './chatListItem.tmpl';
-import './style.scss'
+import { Block } from '../../../utils/Block';
+import './style.scss';
+import { ChatListItemProps } from './types';
 
-interface ChatListProps {
-  imgSrc?: string;
-  letters?: string;
-  addressee: string;
-  date: string;
-  you?: string;
-  messege: string;
-  counter?: string;
+export default class ChatListItem extends Block<ChatListItemProps> {
+  constructor(props: ChatListItemProps) {
+    super(props, 'div');
+  }
+
+  render() {
+    return this.compile(tmpl, this.props);
+  }
 }
-
-export const ChatListItem = (props: ChatListProps) => {
-  return Handlebars.compile(tmpl)(props);
-};

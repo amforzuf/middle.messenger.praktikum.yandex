@@ -1,12 +1,24 @@
-import Handlebars from 'handlebars';
+/* eslint-disable object-shorthand */
 import { tmpl } from './userInfo.tmpl';
-import './style.scss'
+import Avatar from '../../Avatar';
+import './style.scss';
+import { Block } from '../../../utils/Block';
+import avatarImg from '../../../static/images/avatar.png';
 
-interface UserInfoProps {
-  avatarImg: string;
-  username: string;
+export default class UserInfo extends Block {
+  constructor() {
+    super({}, 'div');
+  }
+
+  init() {
+    this.children.avatar = new Avatar({
+      username: 'Просто Вячеслав',
+      avatarImg: avatarImg,
+      class: 'user-info-avatar',
+    });
+  }
+
+  render() {
+    return this.compile(tmpl, this.props);
+  }
 }
-
-export const UserInfo = (props: UserInfoProps) => {
-  return Handlebars.compile(tmpl)(props);
-};

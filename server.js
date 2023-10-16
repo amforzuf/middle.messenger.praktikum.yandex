@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import express from 'express';
 import path from 'path';
 
@@ -12,10 +13,9 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.static('./dist'));
 app.use('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
-
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 app.listen(PORT, () => {
-    console.log(`MessengerApp listening on port ${PORT}!`);
+  console.log(`MessengerApp listening on port ${PORT}!`);
 });
