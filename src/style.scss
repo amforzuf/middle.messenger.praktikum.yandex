@@ -1,7 +1,9 @@
 @import 'globalstyles';
 @import 'pages/SignIn/style';
+@import 'pages/SignUp/style';
 @import 'pages/Profile/style';
 @import 'pages/Chat/style';
+@import 'components/Forms/AuthInput/style';
 
 *, html {
   box-sizing: border-box;

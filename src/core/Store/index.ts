@@ -2,7 +2,7 @@
 import { IUser } from '../../api/AuthAPI';
 import { EventBus } from '../EventBus';
 import { set } from '../../utils/setAndMerge';
-import { Block } from '../Block';
+import Block from '../Block';
 
 export interface State {
   user?: IUser;

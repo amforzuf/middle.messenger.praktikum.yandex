@@ -1,9 +1,9 @@
 import { AvatarProps } from './types';
-import { Block } from '../../core/Block';
+import Block from '../../core/Block';
 
-import tmpl from './avatar.tmpl';
+import { tmpl } from './avatar.tmpl';
 
-export default class Avatar extends Block<AvatarProps> {
+export class Avatar extends Block<AvatarProps> {
   render() {
     return this.compile(tmpl, this.props);
   }

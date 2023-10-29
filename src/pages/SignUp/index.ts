@@ -1,121 +1,159 @@
 /* eslint-disable no-console */
-import { Input } from '../../components/Forms/Input';
-import { Block } from '../../core/Block';
+import { AuthInput } from '../../components/Forms/AuthInput';
+import SubmitPage from '../../utils/Validation/SubmitPage';
 import AuthController from '../../controllers/AuthController';
 import { tmpl } from './signup.tmpl';
 import { Hint } from '../../components/Forms/Hint';
 import { Button } from '../../components/Forms/Button';
-import { handleSubmit } from '../../utils/Validation/validateForm';
+import Validation from '../../utils/Validation/Validation';
+import { ISignUpData } from '../../api/AuthAPI';
 
-export class SignUp extends Block {
+export class SignUp extends SubmitPage {
+  constructor() {
+    super((formData) => {
+      const data = {
+        login: formData.get('login') as string,
+        password: formData.get('password') as string,
+        first_name: formData.get('first_name') as string,
+        second_name: formData.get('second_name') as string,
+        email: formData.get('email') as string,
+        phone: formData.get('phone') as string,
+      };
+      AuthController.signup(data as ISignUpData);
+    }, 'SignUpPage');
+  }
+
   init() {
     this.children.formHint = new Hint({
-      hintText: 'Уже есть аккаунт?',
+      hintLinkText: 'Вход',
       to: '/',
-      hintLinkText: 'Войти',
-      name: 'Sign in',
     });
 
-    this.children.firstNameInput = new Input({
+    this.children.firstNameInput = new AuthInput({
       value: '',
       class: 'form-input',
       name: 'first_name',
-      id: 'first_name',
       placeholder: 'Имя',
       type: 'text',
-      required: true,
-      isValid: true,
+      validationError: false,
+      validationErrorMessage: '',
+      events: {
+        blur: () => {
+          Validation.isValidName(this.children.firstNameInput as AuthInput);
+        },
+      },
     });
 
-    this.children.secondNameInput = new Input({
+    this.children.secondNameInput = new AuthInput({
       value: '',
       class: 'form-input',
       name: 'second_name',
-      id: 'second_name',
       placeholder: 'Фамилия',
       type: 'text',
-      required: true,
-      isValid: true,
+      validationError: false,
+      validationErrorMessage: '',
+      events: {
+        blur: () => {
+          Validation.isValidName(this.children.secondNameInput as AuthInput);
+        },
+      },
     });
 
-    this.children.loginInput = new Input({
+    this.children.loginInput = new AuthInput({
       value: '',
       class: 'form-input',
       name: 'login',
-      id: 'login',
       placeholder: 'Логин',
       type: 'text',
-      required: true,
-      isValid: true,
+      validationError: false,
+      validationErrorMessage: '',
+      events: {
+        blur: () => {
+          Validation.isValidLogin(this.children.loginInput as AuthInput);
+        },
+      },
     });
 
-    this.children.emailInput = new Input({
+    this.children.emailInput = new AuthInput({
       value: '',
       class: 'form-input',
       name: 'email',
-      id: 'email',
       placeholder: 'email',
       type: 'text',
-      required: true,
-      isValid: true,
+      validationError: false,
+      validationErrorMessage: '',
+      events: {
+        blur: () => {
+          Validation.isEmail(this.children.emailInput as AuthInput);
+        },
+      },
     });
 
-    this.children.passwordInput = new Input({
+    this.children.phoneInput = new AuthInput({
+      value: '',
+      class: 'form-input',
+      name: 'phone',
+      placeholder: 'Номер телефона',
+      type: 'text',
+      validationError: false,
+      validationErrorMessage: '',
+      events: {
+        blur: () => {
+          Validation.isPhone(this.children.phoneInput as AuthInput);
+        },
+      },
+    });
+
+    this.children.passwordInput = new AuthInput({
       value: '',
       class: 'form-input',
       name: 'password',
-      id: 'password',
       placeholder: 'Пароль',
-      type: 'password',
-      required: true,
-      isValid: true,
+      type: 'text',
+      validationError: false,
+      validationErrorMessage: '',
+      events: {
+        blur: () => {
+          Validation.isValidPassword(this.children.passwordInput as AuthInput);
+        },
+      },
     });
 
-    this.children.confirmPasswordInput = new Input({
+    this.children.confirmPasswordInput = new AuthInput({
       value: '',
       class: 'form-input',
       name: 'confirm_password',
-      id: 'confirm_password',
       placeholder: 'Подтверждение пароля',
-      type: 'password',
-      required: true,
-      isValid: true,
+      type: 'text',
+      validationError: false,
+      validationErrorMessage: '',
+      events: {
+        blur: () => {
+          Validation.arePasswordsEqual(
+            this.children.passwordInput as AuthInput,
+            this.children.confirmPasswordInput as AuthInput
+          );
+        },
+      },
     });
 
     this.children.formButton = new Button({
       buttonTitle: 'Зарегистрироваться',
       type: 'submit',
-      events: {
-        click: () => this.onSubmit(),
-      },
     });
-  }
 
-  onSubmit() {
-    const values = Object.values(this.children)
-      .filter((child) => child instanceof Input)
-      .map((child) => [(child as Input).getName(), (child as Input).getValue()]);
-
-    const data = Object.fromEntries(values);
-
-    console.log(data, 'signup data');
-
-    AuthController.signup(data);
+    this.props.checkInput = [
+      this.children.firstNameInput,
+      this.children.secondNameInput,
+      this.children.loginInput,
+      this.children.emailInput,
+      this.children.phoneInput,
+      this.children.passwordInput,
+      this.children.confirmPasswordInput,
+    ];
   }
 
   render() {
-    return this.compile(tmpl, {
-      title: this.props.title,
-    });
-  }
-
-  addListeners() {
-    const form = this.getContent()!.querySelector('form');
-    if (form) {
-      form.addEventListener('submit', (event) => {
-        const fieldsToCheck = ['login', 'password', 'second_name', 'first_name', 'email'];
-        handleSubmit(event, fieldsToCheck);
-      });
-    }
+    return this.compile(tmpl, this.props);
   }
 }

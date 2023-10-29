@@ -1,4 +1,4 @@
-import { Block } from '../core/Block';
+import Block from '../core/Block';
 import router from '../core/Router';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

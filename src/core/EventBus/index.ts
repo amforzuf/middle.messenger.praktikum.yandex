@@ -1,20 +1,31 @@
-type EventList = Record<string | number | symbol, unknown[]>;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+type Handler<A extends any[] = unknown[]> = (...args: A) => void;
+type MapInterface<P> = P[keyof P];
 
-export class EventBus<Events extends EventList = EventList> {
-  private readonly listeners = {} as { [K in keyof Events]?: Array<(...args: Events[K]) => void> };
+export class EventBus<
+  E extends Record<string, string> = Record<string, string>,
+  Args extends Record<MapInterface<E>, any[]> = Record<string, any[]>,
+> {
+  private readonly listeners: {
+    [K in MapInterface<E>]?: Handler<Args[K]>[];
+  } = {};
 
-  public on<K extends keyof Events>(event: K, callback: (...args: Events[K]) => void): void {
-    const events = this.listeners[event] ?? [];
-    events.push(callback);
-    this.listeners[event] = events;
+  on<Event extends MapInterface<E>>(event: Event, callback: Handler<Args[Event]>) {
+    if (!this.listeners[event]) {
+      this.listeners[event] = [];
+    }
+    this.listeners[event]?.push(callback);
   }
 
-  public off<K extends keyof Events>(event: K, callback: (...args: Events[K]) => void): void {
-    this.listeners[event] =
-      this.listeners[event]?.filter((listener) => listener !== callback) ?? [];
+  off<Event extends MapInterface<E>>(event: Event, callback: Handler<Args[Event]>) {
+    if (!this.listeners[event]) throw new Error(`${event} doesn't exist`);
+    this.listeners[event] = this.listeners[event]!.filter((l) => l !== callback);
   }
 
-  public emit<K extends keyof Events>(event: K, ...args: Events[K]): void {
-    this.listeners[event]?.forEach((listener) => listener(...args));
+  emit<Event extends MapInterface<E>>(event: Event, ...args: Args[Event]) {
+    if (!this.listeners[event]) return;
+    this.listeners[event]!.forEach((l) => l(...args));
   }
 }
+
+export default EventBus;

@@ -1,5 +1,3 @@
 export const tmpl = `
-  <button class="form-button {{class}}" name="{{name}}">
-    <p>{{buttonTitle}}</p>
-  </button>
+  <button class="form-button {{class}}" type="{{type}}" {{#if disabled }} disabled {{/if}}><p>{{buttonTitle}}</p></button>
 `;

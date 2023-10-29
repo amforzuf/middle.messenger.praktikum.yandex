@@ -3,7 +3,9 @@ export type ButtonProps = {
   buttonTitle: string;
   type?: string;
   id?: string;
-  events: {
+  disabled?: boolean;
+  events?: {
     click: () => void;
+    submit?: () => void;
   };
 };

@@ -1,9 +1,14 @@
 export const tmpl = `
-    <form class='login-page' id='login-page'>
-      <p class="form-title">Вход</p>
+  <section class='login-page'>
+    <p class="form-title">Вход</p>
+    <form id='login-page' id='form'>
       {{{loginInput}}}
       {{{passwordInput}}}
       {{{formButton}}}
-      {{{formHint}}}
     </form>
+    <div class='form-hint'>
+      <p class='form-hint-label'>Нет аккаунта?</p>
+      {{{formHint}}}
+    </div>
+  </section>
 `;

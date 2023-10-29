@@ -1,6 +1,6 @@
 export type AvatarProps = {
   avatarImg?: unknown;
-  username: string;
+  username?: string;
   class?: string;
   attr?: object;
 };

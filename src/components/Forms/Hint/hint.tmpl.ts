@@ -1,9 +1,6 @@
 export const tmpl = `
-  <div class="form-hint">
-    <p class="hint-text">{{hintText}}</p>
-    <a class="hint-link-block" href={{to}} name="{{name}}"}}>
+    <a class="hint-link-block"}}>
       <p>{{hintLinkText}}</p>
       <div class="hint-icon"></div>
     </a>
-  </div>
 `;

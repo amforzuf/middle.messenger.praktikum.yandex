@@ -1,4 +1,4 @@
-import { Block } from '../../../core/Block';
+import Block from '../../../core/Block';
 import { tmpl } from './button.tmpl';
 import { ButtonProps } from './types';
 import './style.scss';
