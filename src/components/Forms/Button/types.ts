@@ -1,7 +1,9 @@
 export type ButtonProps = {
   class?: string;
   buttonTitle: string;
-  type: string;
+  type?: string;
   id?: string;
-  to?: string;
+  events: {
+    click: () => void;
+  };
 };

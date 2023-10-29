@@ -3,7 +3,7 @@ import { InputProps } from './types';
 import * as Validation from '../../../utils/Validation/validation';
 import { Tooltip } from '../../Tooltip';
 import './style.scss';
-import { Block } from '../../../utils/Block';
+import { Block } from '../../../core/Block';
 
 export class Input extends Block<InputProps> {
   private tooltip: Tooltip | null = null;
@@ -12,8 +12,16 @@ export class Input extends Block<InputProps> {
 
   private inputElement!: HTMLInputElement;
 
+  public getName() {
+    return (this.element as HTMLInputElement).name;
+  }
+
+  public getValue() {
+    return (this.element as HTMLInputElement).value;
+  }
+
   constructor(props: InputProps) {
-    super(props, 'div');
+    super(props);
     this.setupEventListeners();
   }
 
@@ -27,6 +35,8 @@ export class Input extends Block<InputProps> {
   }
 
   private handleBlur() {
+    console.log('asdd');
+
     const { value, name } = this.inputElement;
     const passwordInput = document.getElementById('password') as HTMLInputElement;
     const newPassportInput = document.getElementById('new_password') as HTMLInputElement;

@@ -1,20 +1,17 @@
+/* eslint-disable no-console */
 import { Input } from '../../components/Forms/Input';
-import { Block } from '../../utils/Block';
-import { RegistrationProps } from './types';
-import { tmpl } from './registration.tmpl';
+import { Block } from '../../core/Block';
+import AuthController from '../../controllers/AuthController';
+import { tmpl } from './signup.tmpl';
 import { Hint } from '../../components/Forms/Hint';
 import { Button } from '../../components/Forms/Button';
 import { handleSubmit } from '../../utils/Validation/validateForm';
 
-export class RegistrationCompiler extends Block<RegistrationProps> {
-  constructor(props: RegistrationProps) {
-    super(props, 'div');
-  }
-
+export class SignUp extends Block {
   init() {
     this.children.formHint = new Hint({
       hintText: 'Уже есть аккаунт?',
-      to: 'login',
+      to: '/',
       hintLinkText: 'Войти',
       name: 'Sign in',
     });
@@ -88,7 +85,22 @@ export class RegistrationCompiler extends Block<RegistrationProps> {
     this.children.formButton = new Button({
       buttonTitle: 'Зарегистрироваться',
       type: 'submit',
+      events: {
+        click: () => this.onSubmit(),
+      },
     });
+  }
+
+  onSubmit() {
+    const values = Object.values(this.children)
+      .filter((child) => child instanceof Input)
+      .map((child) => [(child as Input).getName(), (child as Input).getValue()]);
+
+    const data = Object.fromEntries(values);
+
+    console.log(data, 'signup data');
+
+    AuthController.signup(data);
   }
 
   render() {

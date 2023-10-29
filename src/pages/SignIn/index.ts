@@ -1,20 +1,19 @@
+/* eslint-disable no-console */
 import { Input } from '../../components/Forms/Input';
-import { Block } from '../../utils/Block';
-import { LoginProps } from './types';
-import { tmpl } from './login.tmpl';
+import { Block } from '../../core/Block';
+import { tmpl } from './signin.tmpl';
 import { Hint } from '../../components/Forms/Hint';
 import { Button } from '../../components/Forms/Button';
 import { handleSubmit } from '../../utils/Validation/validateForm';
+import AuthController from '../../controllers/AuthController';
 
-export class LoginCompiler extends Block<LoginProps> {
-  constructor(props: LoginProps) {
-    super(props, 'div');
-  }
-
+export class SignIn extends Block {
   init() {
+    this.props.title = 'Логин';
+
     this.children.formHint = new Hint({
       hintText: 'Нет аккаунта?',
-      to: 'registration',
+      to: 'signup',
       hintLinkText: 'Зарегистрироваться',
       name: 'Sign up',
     });
@@ -44,7 +43,19 @@ export class LoginCompiler extends Block<LoginProps> {
     this.children.formButton = new Button({
       buttonTitle: 'Войти',
       type: 'submit',
+      events: {
+        click: () => this.onSubmit(),
+      },
     });
+  }
+
+  onSubmit() {
+    const values = Object.values(this.children)
+      .filter((child) => child instanceof Input)
+      .map((child) => [(child as Input).getName(), (child as Input).getValue()]);
+    const data = Object.fromEntries(values);
+    console.log(data, 'signin data');
+    AuthController.signin(data);
   }
 
   render() {

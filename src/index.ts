@@ -1,40 +1,45 @@
-/* eslint-disable no-else-return */
-import { NotFound } from './pages/NotFound';
+/* eslint-disable no-console */
+// import { Profile } from './pages/Profile';
+import { SignUp } from './pages/SignUp';
+import { SignIn } from './pages/SignIn';
+import router from './core/Router';
+import AuthController from './controllers/AuthController';
 import './style.scss';
-import { Block } from './utils/Block';
-import { Main } from './pages/Main';
-import { ServerError } from './pages/ServerError';
-import { Login } from './pages/Login';
-import { Registration } from './pages/Registration';
-import { Profile } from './pages/Profile';
-import { ChangePassword } from './pages/ChangePassword';
-import { Chat } from './pages/Chat';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const root = document.querySelector('#app')!;
-  const getPage = () => {
-    const path = window.location.pathname;
-    switch (path) {
-      case '/':
-        return Main;
-      case '/serverError':
-        return ServerError;
-      case '/login':
-        return Login;
-      case '/registration':
-        return Registration;
-      case '/profile':
-        return Profile;
-      case '/change_password':
-        return ChangePassword;
-      case '/chat':
-        return Chat;
-      default:
-        return NotFound;
+enum Routes {
+  Index = '/',
+  Register = '/signup',
+  Profile = '/profile',
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  router.use(Routes.Index, SignIn).use(Routes.Register, SignUp);
+
+  // eslint-disable-next-line prefer-const
+  let isProtectedRoute = true;
+
+  // eslint-disable-next-line default-case
+  switch (window.location.pathname) {
+    case Routes.Index:
+    case Routes.Register:
+      isProtectedRoute = false;
+      break;
+  }
+
+  try {
+    await AuthController.fetchUser();
+
+    router.start();
+
+    if (!isProtectedRoute) {
+      router.go(Routes.Profile);
     }
-  };
+  } catch (e) {
+    console.log(e, 'Here');
+    router.start();
 
-  const page: Block<object> = getPage();
-  root.append(page.element as HTMLElement);
-  page.dispatchComponentDidMount();
+    if (isProtectedRoute) {
+      router.go(Routes.Index);
+    }
+  }
 });

@@ -1,12 +1,8 @@
 export const tmpl = `
     <form class='login-page' id='login-page'>
-      <p class="form-title">{{title}}</p>
-      {{{firstNameInput}}}
-      {{{secondNameInput}}}
+      <p class="form-title">Вход</p>
       {{{loginInput}}}
-      {{{emailInput}}}
       {{{passwordInput}}}
-      {{{confirmPasswordInput}}}
       {{{formButton}}}
       {{{formHint}}}
     </form>
