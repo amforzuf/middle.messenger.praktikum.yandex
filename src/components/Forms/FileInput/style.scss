@@ -1,0 +1,70 @@
+@import './../../../globalstyles';
+
+// .input-file {
+//   display: flex;
+//   justify-content: flex-start;
+//   align-items: flex-start;
+//   width: auto;
+//   .form-group {
+//     input[type=file]{
+//       outline: 0;
+//       opacity: 0;
+//       pointer-events: none;
+//       user-select: none;
+//       width: 0;
+//     }
+//     .label {
+//       width: 40px;
+//       border: 1px dashed grey;
+//       border-radius: 5px;
+//       display: flex;
+//       align-items: center;
+//       justify-content: space-around;
+//       padding: 10px;
+//       transition: border 300ms ease;
+//       cursor: pointer;
+//       text-align: center;
+//       i {
+//         display: block;
+//         font-size: 24px;
+//         color: grey;
+//         transition: 200ms color;
+//       }
+//       &:hover {
+//         border: 1px solid var(--violet-lighter);
+//       }
+//       &:hover i {
+//         color: var(--violet-lighter);
+//       }
+//     }
+//   }
+// }
+
+.file-uploader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 420px;
+  padding: 30px 20px;
+  border: 2px dashed var(--violet-bright);
+  background-color: rgba(0, 0, 0, 0.4);;
+
+  input {
+    width: 360px;
+  }
+}
+
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: var(--violet-bright);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: var(--violet);
+}

@@ -28,6 +28,6 @@ export class UsersAPI extends API {
   }
 
   avatarChange(data: FormData): Promise<void> {
-    return this.http.post('/profile/avatar', data);
+    return this.http.put('/profile/avatar', data);
   }
 }

@@ -9,7 +9,6 @@ class UsersController {
   async profileInfoChange(data: IUsersProfileData) {
     try {
       await this.api.profileInfoChange(data);
-
       Router.go('/profile');
     } catch (error) {
       console.log(error);
@@ -19,7 +18,15 @@ class UsersController {
   async profilePasswordChange(data: IUsersProfilePassword) {
     try {
       await this.api.profilePasswordChange(data);
+      Router.go('/profile');
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
+  async avatarChange(data: FormData) {
+    try {
+      await this.api.avatarChange(data);
       Router.go('/profile');
     } catch (error) {
       console.log(error);

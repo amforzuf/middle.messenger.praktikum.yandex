@@ -64,6 +64,12 @@
             color: #635E66;
         }
       }
+      .no-hover {
+        cursor: auto;
+        &:hover {
+          color: var(--text-color);
+        }
+      }
 
     }
   }

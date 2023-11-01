@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-fallthrough */
 import { AuthInput } from '../../components/Forms/AuthInput';
 import Block from '../../core/Block';

@@ -2,13 +2,14 @@ import { AuthInput } from '../../components/Forms/AuthInput';
 import { Avatar } from '../../components/Avatar';
 import { tmpl } from './profile.tmpl';
 import { Button } from '../../components/Forms/Button';
-import avataerImg from '../../static/images/avatar.png';
 import Validation from '../../utils/Validation/Validation';
 import AuthController from '../../controllers/AuthController';
 import UsersController from '../../controllers/UsersController';
 import SubmitPage from '../../utils/Validation/SubmitPage';
 import { IUsersProfileData } from '../../api/UsersApi';
-import store, { withStore, State } from '../../core/Store';
+import store from '../../core/Store';
+import { Link } from '../../components/Link';
+import { FileInput } from '../../components/Forms/FileInput';
 
 export class Profile extends SubmitPage {
   constructor() {
@@ -22,7 +23,7 @@ export class Profile extends SubmitPage {
       };
       UsersController.profileInfoChange(data as IUsersProfileData);
       AuthController.fetchUser();
-    }, 'SignUpPage');
+    }, 'ProfilePage');
   }
 
   componentDidMount(): void {
@@ -32,8 +33,28 @@ export class Profile extends SubmitPage {
   init() {
     this.children.profileAvatar = new Avatar({
       username: `${store.getState().user?.first_name} ${store.getState().user?.second_name}`,
-      avatarImg: avataerImg,
+      avatarImg: `${store.getState().user?.avatar}`,
       class: 'profile-avatar',
+    });
+
+    this.children.changePasswordLink = new Link({
+      to: '/change_password',
+      linkText: 'Сменить пароль',
+    });
+
+    this.children.changeAvatarLink = new Link({
+      to: '/change_avatar',
+      linkText: 'Сменить аватар',
+    });
+
+    this.children.logoutButton = new Button({
+      class: 'just-text',
+      buttonTitle: 'Выйти',
+      events: {
+        click: () => {
+          AuthController.logout();
+        },
+      },
     });
 
     this.children.firstNameInput = new AuthInput({
@@ -111,10 +132,10 @@ export class Profile extends SubmitPage {
       },
     });
 
-    this.children.cancelBatton = new Button({
-      buttonTitle: 'Назад',
-      type: 'a',
-      class: 'profile-cancel-button',
+    this.children.cancelBatton = new Link({
+      linkText: 'Назад',
+      class: 'back-link',
+      to: '/messenger',
     });
 
     this.children.saveButton = new Button({

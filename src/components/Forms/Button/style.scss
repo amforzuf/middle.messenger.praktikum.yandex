@@ -76,6 +76,10 @@
     color: var(--text-color);
   }
 
+  p {
+    color: var(--text-color);
+  }
+
   &:hover {
     transition: .3s background;
     background-color: var(--text-color);
@@ -85,4 +89,27 @@
     transition: .3s color;
     color: var(--violet-dark);
   }
+
+  &:hover p {
+    transition: .3s color;
+    color: var(--violet-dark);
+  }
+}
+
+.just-text {
+  width: auto;
+  height: auto;
+  background: none;
+  margin: 0;
+  padding: 0;
+  p {
+    justify-content: flex-start;
+  }
+  &:hover {
+    background: none;
+  }
+}
+
+.hidden {
+  display: none;
 }

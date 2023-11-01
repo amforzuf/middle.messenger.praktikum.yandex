@@ -1,10 +1,8 @@
 export const tmpl = `
   <section class="profile">
-    <h1>Смена пароля</h1>
+    <h1>Смена Аватара</h1>
     <form>
-      {{{oldPassword}}}
-      {{{newPassword}}}
-      {{{newPasswordConfirm}}}
+      {{{inputFile}}}
       <div class="save-container">
         {{{saveButton}}}
         {{{cancelBatton}}}
