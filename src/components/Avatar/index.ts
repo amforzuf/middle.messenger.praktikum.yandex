@@ -1,5 +1,6 @@
 import { AvatarProps } from './types';
 import Block from '../../core/Block';
+import './style.scss';
 
 import { tmpl } from './avatar.tmpl';
 

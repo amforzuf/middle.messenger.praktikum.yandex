@@ -6,6 +6,7 @@ import { ServerError } from './pages/ServerError';
 import { NotFound } from './pages/NotFound';
 import { ChangePassword } from './pages/ChangePassword';
 import { ChangeAvatar } from './pages/ChangeAvatar';
+import { Chat } from './pages/Chat';
 import router from './core/Router';
 import AuthController from './controllers/AuthController';
 import './style.scss';
@@ -18,6 +19,7 @@ enum Routes {
   NotFound = '/404',
   ChangePassword = '/change_password',
   ChangeAvatar = '/change_avatar',
+  Messenger = '/messenger',
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -28,6 +30,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.NotFound, NotFound)
     .use(Routes.ServerError, ServerError)
     .use(Routes.ChangePassword, ChangePassword)
+    .use(Routes.Messenger, Chat)
     .use(Routes.ChangeAvatar, ChangeAvatar);
 
   // eslint-disable-next-line prefer-const
@@ -42,6 +45,9 @@ window.addEventListener('DOMContentLoaded', async () => {
       isProtectedRoute = true;
       break;
     case Routes.ChangeAvatar:
+      isProtectedRoute = true;
+      break;
+    case Routes.Messenger:
       isProtectedRoute = true;
       break;
     default:

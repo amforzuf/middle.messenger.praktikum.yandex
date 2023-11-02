@@ -1,6 +1,6 @@
 import { API } from './api';
 
-export interface IUsersProfileData {
+export interface UsersProfileData {
   first_name: string;
   second_name: string;
   display_name: string;
@@ -9,9 +9,28 @@ export interface IUsersProfileData {
   phone: string;
 }
 
-export interface IUsersProfilePassword {
+export interface UsersProfilePassword {
   oldPassword: string;
   newPassword: string;
+}
+
+export interface UsersResponse {
+  id: number;
+  first_name: string;
+  second_name: string;
+  display_name: string;
+  phone: string;
+  login: string;
+  avatar: string;
+  email: string;
+}
+
+export interface SearchData {
+  login: string;
+}
+
+export interface AvatarResponse {
+  avatar: string;
 }
 
 export class UsersAPI extends API {
@@ -19,15 +38,19 @@ export class UsersAPI extends API {
     super('/user');
   }
 
-  profileInfoChange(data: IUsersProfileData): Promise<void> {
+  profileInfoChange(data: UsersProfileData): Promise<void> {
     return this.http.put('/profile', data);
   }
 
-  profilePasswordChange(data: IUsersProfilePassword): Promise<void> {
+  profilePasswordChange(data: UsersProfilePassword): Promise<void> {
     return this.http.put('/password', data);
   }
 
-  avatarChange(data: FormData): Promise<void> {
+  avatarChange(data: FormData): Promise<AvatarResponse> {
     return this.http.put('/profile/avatar', data);
+  }
+
+  search(data: SearchData): Promise<UsersResponse> {
+    return this.http.post('/search', data);
   }
 }

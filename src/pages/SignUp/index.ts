@@ -6,7 +6,7 @@ import { tmpl } from './signup.tmpl';
 import { Hint } from '../../components/Forms/Hint';
 import { Button } from '../../components/Forms/Button';
 import Validation from '../../utils/Validation/Validation';
-import { ISignUpData } from '../../api/AuthAPI';
+import { SignUpData } from '../../api/AuthAPI';
 
 export class SignUp extends SubmitPage {
   constructor() {
@@ -19,7 +19,7 @@ export class SignUp extends SubmitPage {
         email: formData.get('email') as string,
         phone: formData.get('phone') as string,
       };
-      AuthController.signup(data as ISignUpData);
+      AuthController.signup(data as SignUpData);
     }, 'SignUpPage');
   }
 
@@ -109,7 +109,7 @@ export class SignUp extends SubmitPage {
       class: 'form-input',
       name: 'password',
       placeholder: 'Пароль',
-      type: 'text',
+      type: 'password',
       validationError: false,
       validationErrorMessage: '',
       events: {
@@ -124,7 +124,7 @@ export class SignUp extends SubmitPage {
       class: 'form-input',
       name: 'confirm_password',
       placeholder: 'Подтверждение пароля',
-      type: 'text',
+      type: 'password',
       validationError: false,
       validationErrorMessage: '',
       events: {

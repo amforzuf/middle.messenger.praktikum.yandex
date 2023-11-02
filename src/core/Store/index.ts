@@ -1,11 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IUser } from '../../api/AuthAPI';
+import { User } from '../../api/AuthAPI';
+import { Chats } from '../../api/ChatsAPI';
 import { EventBus } from '../EventBus';
 import { set } from '../../utils/setAndMerge';
 import Block from '../Block';
 
 export interface State {
-  user?: IUser;
+  user: User;
+  chats: Chats[];
+  selectedChat?: Record<string, any>;
+  messages?: any;
+  chatUsers?: any;
 }
 
 enum StorageEvent {
@@ -13,7 +18,7 @@ enum StorageEvent {
 }
 
 class Store extends EventBus {
-  private state: State = {};
+  private state: any = {};
 
   getState() {
     return this.state;

@@ -9,7 +9,6 @@ import SubmitPage from '../../utils/Validation/SubmitPage';
 import { IUsersProfileData } from '../../api/UsersApi';
 import store from '../../core/Store';
 import { Link } from '../../components/Link';
-import { FileInput } from '../../components/Forms/FileInput';
 
 export class Profile extends SubmitPage {
   constructor() {

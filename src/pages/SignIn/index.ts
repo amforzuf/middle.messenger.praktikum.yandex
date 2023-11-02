@@ -5,7 +5,7 @@ import { Hint } from '../../components/Forms/Hint';
 import { Button } from '../../components/Forms/Button';
 import AuthController from '../../controllers/AuthController';
 import SubmitPage from '../../utils/Validation/SubmitPage';
-import { ISignInData } from '../../api/AuthAPI';
+import { SignInData } from '../../api/AuthAPI';
 import Validation from '../../utils/Validation/Validation';
 
 export class SignIn extends SubmitPage {
@@ -15,7 +15,7 @@ export class SignIn extends SubmitPage {
         login: formData.get('login') as string,
         password: formData.get('password') as string,
       };
-      AuthController.signin(data as ISignInData);
+      AuthController.signin(data as SignInData);
     }, 'SignInPage');
   }
 

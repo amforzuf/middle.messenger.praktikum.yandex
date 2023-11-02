@@ -41,8 +41,6 @@ export class ChangeAvatar extends Block {
           event.preventDefault();
           const formData = new FormData();
           formData.append('avatar', this.props.file);
-          console.log(this.props.file);
-          console.log(formData);
           UsersController.avatarChange(formData);
         },
       },

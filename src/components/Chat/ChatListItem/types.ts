@@ -1,3 +1,5 @@
+// import { Chats } from "../../../api/ChatsAPI";
+
 export type ChatListItemProps = {
   id: number;
   imgSrc?: string;
@@ -7,5 +9,7 @@ export type ChatListItemProps = {
   you?: string;
   messege: string;
   counter?: string;
-  onClick?: unknown;
+  events: {
+    click: () => void;
+  };
 };
