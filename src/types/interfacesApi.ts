@@ -33,7 +33,7 @@ export interface Chat {
 
 export interface Message {
   chat_id: number;
-  time: string;
+  time: Date;
   type: string;
   id: string;
   user_id: number;

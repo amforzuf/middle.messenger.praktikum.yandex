@@ -1,15 +1,7 @@
-// import { Chats } from "../../../api/ChatsAPI";
+import { Chats } from '../../../api/ChatsAPI';
 
 export type ChatListItemProps = {
-  id: number;
-  imgSrc?: string;
-  letters?: string;
-  addressee: string;
-  date: string;
-  you?: string;
-  messege: string;
-  counter?: string;
-  events: {
-    click: () => void;
-  };
+  chat: Chats;
+  selectedChat: Chats['id'];
+  events?: Record<string, (args: unknown) => void>;
 };

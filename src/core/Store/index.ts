@@ -4,17 +4,18 @@ import { Chats } from '../../api/ChatsAPI';
 import { EventBus } from '../EventBus';
 import { set } from '../../utils/setAndMerge';
 import Block from '../Block';
+import { Message } from '../../types/interfacesApi';
 
 export interface State {
   user: User;
   chats: Chats[];
-  selectedChat?: Record<string, any>;
-  messages?: any;
+  selectedChat: Chats['id'] | null;
+  messages?: Record<Chats['id'], Message[]>;
   chatUsers?: any;
 }
 
-enum StorageEvent {
-  UpdateState = 'update',
+export enum StorageEvent {
+  UpdatedState = 'updated',
 }
 
 class Store extends EventBus {
@@ -30,7 +31,7 @@ class Store extends EventBus {
     // eslint-disable-next-line no-console
     console.log(this.state);
 
-    this.emit(StorageEvent.UpdateState, this.state);
+    this.emit(StorageEvent.UpdatedState, this.state);
   }
 }
 
@@ -42,7 +43,7 @@ export function withStore(mapStateToProps: (state: State) => any) {
       constructor(props: any) {
         super({ ...props, ...mapStateToProps(store.getState()) });
 
-        store.on(StorageEvent.UpdateState, () => {
+        store.on(StorageEvent.UpdatedState, () => {
           const propsFromState = mapStateToProps(store.getState());
           this.setProps(propsFromState);
         });

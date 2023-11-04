@@ -1,3 +1,11 @@
+.active {
+  background-color: #21315a;
+
+  &:hover {
+    background-color:#21315a;
+  }
+}
+
 .chat-list-item {
   display: flex;
   justify-content: flex-start;
@@ -8,6 +16,25 @@
 
   &:hover {
     background-color: #2A2933
+  }
+
+  .user-info-avatar {
+    margin-left: 40px;
+    margin-right: 15px;
+
+    .no-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      background-color: #7298FB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        font-size: 14px;
+      }
+    }
   }
 
   .chat-info {

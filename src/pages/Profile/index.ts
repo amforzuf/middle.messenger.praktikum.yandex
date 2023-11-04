@@ -6,7 +6,7 @@ import Validation from '../../utils/Validation/Validation';
 import AuthController from '../../controllers/AuthController';
 import UsersController from '../../controllers/UsersController';
 import SubmitPage from '../../utils/Validation/SubmitPage';
-import { IUsersProfileData } from '../../api/UsersApi';
+import { UsersProfileData } from '../../api/UsersApi';
 import store from '../../core/Store';
 import { Link } from '../../components/Link';
 
@@ -20,7 +20,7 @@ export class Profile extends SubmitPage {
         email: formData.get('email') as string,
         phone: formData.get('phone') as string,
       };
-      UsersController.profileInfoChange(data as IUsersProfileData);
+      UsersController.profileInfoChange(data as UsersProfileData);
       AuthController.fetchUser();
     }, 'ProfilePage');
   }

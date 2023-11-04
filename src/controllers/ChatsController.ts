@@ -16,11 +16,12 @@ class ChatsController {
   async getChats(data?: IndexedString) {
     try {
       const chats = await this.api.getChats(data);
-      chats.map(async (chat) => {
-        const token = await this.getToken(chat.id);
-        await MessagesController.connect(chat.id, token as string);
-      });
+      // chats.map(async (chat) => {
+      //   const token = await this.getToken(chat.id);
+      //   await MessagesController.connect(chat.id, token as string);
+      // });
       store.set('chats', chats);
+      console.log(store.getState().chats);
     } catch (error) {
       console.log(error);
     }
@@ -80,6 +81,10 @@ class ChatsController {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  selectChat(id: number) {
+    store.set('selectedChat', id);
   }
 }
 

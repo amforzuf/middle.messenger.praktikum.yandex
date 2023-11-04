@@ -9,7 +9,7 @@ export interface Chats {
   avatar: string;
   unread_count: number;
   created_by: number;
-  last_message: {
+  last_message?: {
     user: {
       first_name: string;
       second_name: string;
@@ -18,8 +18,8 @@ export interface Chats {
       login: string;
       phone: string;
     };
-    time: string;
-    content: string;
+    time?: Date;
+    content?: string;
   };
 }
 

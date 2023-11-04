@@ -1,0 +1,16 @@
+.chat-list-items {
+  width: 430px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+}
