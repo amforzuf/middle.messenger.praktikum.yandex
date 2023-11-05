@@ -1,47 +1,40 @@
+/* eslint-disable func-names */
 import moment from 'moment';
 import Handlebars from 'handlebars';
+import store from '../../../core/Store';
 
-Handlebars.registerHelper('lastMessage', (array) => {
-  if (array && array.length > 0) {
-    return array[array.length - 1].message;
+Handlebars.registerHelper('formatDate', function (date) {
+  const momentDate = moment(date);
+  const today = moment().startOf('day');
+
+  if (momentDate.isSame(today, 'day')) {
+    return momentDate.format('HH:mm');
   }
-  return '';
+  return momentDate.format('D MMM, HH:mm');
 });
 
-Handlebars.registerHelper('lastItemDate', (array) => {
-  if (array && array.length > 0) {
-    return moment(new Date(array[array.length - 1].date)).format('L');
+Handlebars.registerHelper('formatMessage', function (messege: string) {
+  const formatMessege = messege;
+  if (formatMessege.length > 20) {
+    return `${formatMessege.substring(0, 20)}...`;
   }
-
-  return '';
+  return formatMessege;
 });
 
-Handlebars.registerHelper('ifIdsEqual', (id, opts) => {
-  const idActive = window.location.pathname.slice(1);
-  if (idActive === id) {
-    return opts.fn('background-color: #A8D8EA');
+Handlebars.registerHelper('selectedChat', function (chatId) {
+  if (store.getState().selectedChat === chatId) {
+    return 'active';
   }
-
-  return opts.inverse({});
-});
-
-Handlebars.registerHelper('ifLastPerson', (array, opts) => {
-  if (array && array.length > 0) {
-    if (array[array.length - 1].author !== 'Вы') {
-      return opts.fn(array[array.length - 1].message);
-    }
-
-    return opts.inverse(array[array.length - 1].message);
-  }
-
-  return '';
+  return null;
 });
 
 export const tmpl = `
-  <div {{#ifIdsEqual chat.id}} class="chat-list-item active" {{else}} class="chat-list-item" {{/ifIdsEqual}} >
+  <div class='chat-list-item {{selectedChat chat.id}}' id={{chat.id}}>
     <div class='user-info-avatar'>
       {{#if chat.avatar}}
-        <img src="https://ya-praktikum.tech/api/v2/resources{{chat.avatar}}" alt=""/>
+        <div class='no-avatar'>
+          <img src="https://ya-praktikum.tech/api/v2/resources{{chat.avatar}}" alt=""/>
+        </div>
       {{else}}
         <div class='no-avatar'>
           <p>:)</p>
@@ -52,16 +45,15 @@ export const tmpl = `
       <div class='chat-info-meta'>
         <p class="addressee">{{chat.title}}</p>
         {{#if chat.last_message.time}}
-          <p class="date">{{date}}</p>
+          <p class="date">{{formatDate chat.last_message.time}}</p>
         {{/if}}
       </div>
       <div class='chat-info-data'>
-        {{#ifLastPerson chat.last_message.content}}
-          <p class="messege">{{chat.last_message.content}}</p>
+        {{#if chat.last_message.content}}
+          <p class="you">{{chat.last_message.user.first_name}}:</p>
+          <p class="messege">{{formatMessage chat.last_message.content}}</p>
         {{else}}
-          <p class="you">Вы{{you}}</p>
-          <p class="messege">{{chat.last_message.content}}</p>
-        {{/ifLastPerson}}
+        {{/if}}
       </div>
     </div>
     {{#if chat.unread_count}}
@@ -69,17 +61,3 @@ export const tmpl = `
     {{/if}}
   </div>
 `;
-
-// export const tmpl = `
-
-//     <div class='user-info-avatar'>
-//       {{#if chat.avatar}}
-//         <img src="https://ya-praktikum.tech/api/v2/resources{{chat.avatar}}" alt=""/>
-//       {{else}}
-//         <div class='no-avatar'>
-//           <p>:)</p>
-//         </div>
-//       {{/if}}
-//     </div>
-
-// `;

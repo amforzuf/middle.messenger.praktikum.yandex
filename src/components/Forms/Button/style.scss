@@ -7,7 +7,7 @@
   width: 420px;
   margin-top: 12px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: var(--text-color);
   font-family: inherit;
   line-height: 1.5;
@@ -102,9 +102,11 @@
   background: none;
   margin: 0;
   padding: 0;
+
   p {
     justify-content: flex-start;
   }
+
   &:hover {
     background: none;
   }

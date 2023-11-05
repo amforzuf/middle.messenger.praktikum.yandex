@@ -9,6 +9,7 @@ import { ChangeAvatar } from './pages/ChangeAvatar';
 import { Chat } from './pages/Chat';
 import router from './core/Router';
 import AuthController from './controllers/AuthController';
+import ChatsController from './controllers/ChatsController';
 import './style.scss';
 
 enum Routes {
@@ -41,21 +42,13 @@ window.addEventListener('DOMContentLoaded', async () => {
     case Routes.Register:
       isProtectedRoute = false;
       break;
-    case Routes.ChangePassword:
-      isProtectedRoute = true;
-      break;
-    case Routes.ChangeAvatar:
-      isProtectedRoute = true;
-      break;
-    case Routes.Messenger:
-      isProtectedRoute = true;
-      break;
     default:
-      Routes.NotFound;
+      break;
   }
 
   try {
     await AuthController.fetchUser();
+    await ChatsController.getChats();
 
     router.start();
 

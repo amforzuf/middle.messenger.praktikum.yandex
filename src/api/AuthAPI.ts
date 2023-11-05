@@ -42,7 +42,13 @@ export class AuthAPI extends API {
     return this.http.post('/logout');
   }
 
-  getUser(): Promise<User> {
+  read(): Promise<User> {
     return this.http.get('/user');
   }
+
+  create = undefined;
+
+  update = undefined;
+
+  delete = undefined;
 }

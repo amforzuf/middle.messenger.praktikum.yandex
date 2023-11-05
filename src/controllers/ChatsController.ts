@@ -1,25 +1,20 @@
 /* eslint-disable no-console */
-import {
-  CreateChat,
-  DeleteChat,
-  ChatsAPI,
-  UsersData,
-  UserResponse,
-  IndexedString,
-} from '../api/ChatsAPI';
+import { CreateChat, DeleteChat, ChatsAPI, UsersData, UserResponse, Chats } from '../api/ChatsAPI';
 import store from '../core/Store';
 import MessagesController from './MessagesController';
+import Router from '../core/Router';
 
 class ChatsController {
   private api = new ChatsAPI();
 
-  async getChats(data?: IndexedString) {
+  async getChats(data?: StringIndexed): Promise<void> {
     try {
       const chats = await this.api.getChats(data);
-      // chats.map(async (chat) => {
-      //   const token = await this.getToken(chat.id);
-      //   await MessagesController.connect(chat.id, token as string);
-      // });
+      console.log(chats);
+      chats.map(async (chat) => {
+        const token = await this.getToken(chat.id);
+        await MessagesController.connect(chat.id, token as string);
+      });
       store.set('chats', chats);
       console.log(store.getState().chats);
     } catch (error) {
@@ -27,18 +22,15 @@ class ChatsController {
     }
   }
 
-  async getToken(id: number): Promise<string | void> {
-    try {
-      await this.api.getToken(id);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error) {
-      console.error(error);
-    }
+  public getToken(id: Chats['id']): Promise<string> {
+    return this.api.getToken(id);
   }
 
   async createChat(data: CreateChat) {
     try {
-      await this.api.createChat(data);
+      await this.api.create(data);
+      await this.getChats();
+      Router.go('/messenger');
     } catch (error) {
       console.error(error);
     }
@@ -52,14 +44,8 @@ class ChatsController {
     }
   }
 
-  async addUsers(data: UsersData) {
-    try {
-      await this.api.addUsers(data);
-
-      await this.getUsers(data.chatId);
-    } catch (error) {
-      console.error(error);
-    }
+  async addUser(id: Chats['id'], userId: UserResponse['id']): Promise<void> {
+    this.api.addUsers(id, [userId]);
   }
 
   async getUsers(id: number) {
@@ -74,16 +60,15 @@ class ChatsController {
     }
   }
 
-  async deleteUsers(data: UsersData) {
+  async deleteUser(id: Chats['id'], userId: UserResponse['id']): Promise<void> {
     try {
-      await this.api.deleteUsers(data);
-      await this.getUsers(data.chatId);
+      await this.api.deleteUsers(id, [userId]);
     } catch (error) {
       console.error(error);
     }
   }
 
-  selectChat(id: number) {
+  selectChat(id: Chats['id']) {
     store.set('selectedChat', id);
   }
 }

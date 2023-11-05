@@ -4,4 +4,6 @@ export type ChatListItemProps = {
   chat: Chats;
   selectedChat: Chats['id'];
   events?: Record<string, (args: unknown) => void>;
+  class?: string;
+  id: string;
 };

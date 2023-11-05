@@ -25,5 +25,5 @@ export default function queryStringify(data: StringIndexed = {}, parentKey: stri
     }
   });
 
-  return params.length > 0 ? `?${params.join('&')}` : '';
+  return params.length > 0 ? `${params.join('&')}` : '';
 }

@@ -18,25 +18,7 @@
     align-items: center;
     margin: 0 0 40px;
 
-    // .avatar-container {
-    //   display: flex;
-    //   align-items: center;
-    //   justify-content: flex-start;
-    //   gap: 10px;
-    //   margin: 0;
-    //   border-radius: 50%;
-
-    //   img {
-    //     width: 70px;
-    //   }
-
-    //   p {
-    //     font-size: 14px;
-    //   }
-    // }
-
     .profile-avatar {
-
       img {
         width: 70px;
       }
@@ -65,8 +47,10 @@
             color: #635E66;
         }
       }
+
       .no-hover {
         cursor: auto;
+
         &:hover {
           color: var(--text-color);
         }

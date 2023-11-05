@@ -1,3 +1,4 @@
+/* eslint-disable no-continue */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type Indexed<T = any> = {
@@ -50,32 +51,28 @@ export const set = (object: Indexed | unknown, path: string, value: unknown): In
   return merge(object as Indexed, result);
 };
 
-export const isEqual = (a: Indexed, b: Indexed): boolean => {
-  if (!a || !b) {
-    return a === b;
-  }
-
-  if (Object.keys(a).length !== Object.keys(b).length) {
+export function isEqual(lhs: PlainObject, rhs: PlainObject): boolean {
+  if (Object.keys(lhs).length !== Object.keys(rhs).length) {
     return false;
   }
 
-  if (Object.keys(a).length === 0 || Object.keys(b).length === 0) {
-    return Object.keys(a).length === 0 && Object.keys(b).length === 0;
-  }
-
-  for (const [key, value] of Object.entries(a)) {
-    if (!b.hasOwnProperty(key) || a[key] === null || b[key] === null) {
-      return a[key] === b[key];
-    }
-    if (isArrayOrObject(value) && isArrayOrObject(b[key])) {
-      if (!isEqual(value, b[key])) {
-        return false;
+  for (const [key, value] of Object.entries(lhs)) {
+    const rightValue = rhs[key];
+    if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
+      if (isEqual(value, rightValue)) {
+        continue;
       }
+
+      return false;
+    }
+
+    if (value !== rightValue) {
+      return false;
     }
   }
 
   return true;
-};
+}
 
 export function cloneDeep(obj: Record<string, unknown | any>): Record<string, unknown | any> {
   return (function _cloneDeep(item: any): Record<string, unknown | any> {

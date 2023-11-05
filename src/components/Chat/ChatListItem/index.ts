@@ -14,10 +14,21 @@ class ChatListItemClass extends Block {
         ...props?.events,
         click: () => {
           store.set('selectedChat', this.props.chat.id);
+          this.props.class = 'active';
+          this.removeActiveFromOthers();
         },
       },
     });
   }
+
+  removeActiveFromOthers = () => {
+    const chatListItems = document.querySelectorAll('.chat-list-item');
+    chatListItems.forEach((item) => {
+      if (item !== this.element) {
+        item.classList.remove('active');
+      }
+    });
+  };
 
   render() {
     return this.compile(tmpl, this.props);

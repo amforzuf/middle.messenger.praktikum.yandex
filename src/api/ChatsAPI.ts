@@ -61,11 +61,11 @@ export class ChatsAPI extends API {
     super('/chats');
   }
 
-  getChats(data?: IndexedString): Promise<Chats[]> {
+  public getChats(data?: StringIndexed): Promise<Chats[]> {
     return this.http.get('', data);
   }
 
-  createChat(data: CreateChat) {
+  create(data: CreateChat) {
     return this.http.post('', data);
   }
 
@@ -77,16 +77,22 @@ export class ChatsAPI extends API {
     return this.http.get(`/${id}/users`);
   }
 
-  addUsers(data: UsersData) {
-    return this.http.put('/users', data);
+  addUsers(id: Chats['id'], users: UserResponse['id'][]) {
+    return this.http.put('/users', { users, chatId: id });
   }
 
-  deleteUsers(data: UsersData) {
-    return this.http.delete('/users', data);
+  deleteUsers(id: Chats['id'], users: UserResponse['id'][]) {
+    return this.http.delete('/users', { users, chatId: id });
   }
 
   async getToken(id: number): Promise<string> {
     const response = await this.http.post<{ token: string }>(`/token/${id}`);
     return response.token;
   }
+
+  read = undefined;
+
+  update = undefined;
+
+  delete = undefined;
 }

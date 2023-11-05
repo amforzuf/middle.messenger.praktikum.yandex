@@ -5,7 +5,7 @@ import Validation from '../../utils/Validation/Validation';
 import AuthController from '../../controllers/AuthController';
 import UsersController from '../../controllers/UsersController';
 import SubmitPage from '../../utils/Validation/SubmitPage';
-import { IUsersProfilePassword } from '../../api/UsersApi';
+import { UsersProfilePassword } from '../../api/UsersApi';
 import { Link } from '../../components/Link';
 
 export class ChangePassword extends SubmitPage {
@@ -15,7 +15,7 @@ export class ChangePassword extends SubmitPage {
         oldPassword: formData.get('old_password') as string,
         newPassword: formData.get('password_confirm') as string,
       };
-      UsersController.profilePasswordChange(data as IUsersProfilePassword);
+      UsersController.profilePasswordChange(data as UsersProfilePassword);
       AuthController.fetchUser();
     }, 'ChangePasswordPage');
   }

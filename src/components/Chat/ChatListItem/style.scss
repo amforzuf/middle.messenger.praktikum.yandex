@@ -1,16 +1,10 @@
-.active {
-  background-color: #21315a;
-
-  &:hover {
-    background-color:#21315a;
-  }
-}
+@import './../../../globalstyles';
 
 .chat-list-item {
   display: flex;
   justify-content: flex-start;
   width: 420px;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 5px 5px 0;
   padding: 10px 0;
   cursor: pointer;
 
@@ -26,13 +20,19 @@
       width: 40px;
       height: 40px;
       border-radius: 20px;
-      background-color: #7298FB;
+      background-color: var(--blue);
       display: flex;
       align-items: center;
       justify-content: center;
 
       p {
         font-size: 14px;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
       }
     }
   }

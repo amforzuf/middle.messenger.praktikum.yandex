@@ -50,7 +50,15 @@ export class UsersAPI extends API {
     return this.http.put('/profile/avatar', data);
   }
 
-  search(data: SearchData): Promise<UsersResponse> {
+  search(data: SearchData): Promise<UsersResponse[]> {
     return this.http.post('/search', data);
   }
+
+  read = undefined;
+
+  create = undefined;
+
+  update = undefined;
+
+  delete = undefined;
 }

@@ -1,0 +1,45 @@
+@import './../../../globalstyles';
+
+.add-chat-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 340px;
+  height: 44px;
+  border-radius: 5px;
+  background-color: var(--violet-lighter);
+  font-family: inherit;
+  line-height: 1.5;
+  border: none;
+  font-weight: 400;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-bottom: 16px;
+
+  p, a {
+    margin-top: 3px;
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+  }
+
+  &:hover {
+    transition: .3s background;
+    background-color: var(--violet);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--violet);
+
+    p {
+      color: var(--violet-dark);
+    }
+  }
+}

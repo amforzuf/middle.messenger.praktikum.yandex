@@ -25,13 +25,7 @@ class Block<P extends Record<string, any> = any> {
 
   private _element: HTMLElement | null = null;
 
-  /** JSDoc
-   * @param {string} tagName
-   * @param {Object} props
-   *
-   * @returns {void}
-   */
-  constructor(propsWithChildren: P) {
+  public constructor(propsWithChildren: P) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
@@ -44,6 +38,13 @@ class Block<P extends Record<string, any> = any> {
 
     eventBus.emit(Block.EVENTS.INIT);
   }
+
+  /** JSDoc
+   * @param {string} tagName
+   * @param {Object} props
+   *
+   * @returns {void}
+   */
 
   _getChildrenAndProps(childrenAndProps: P): {
     props: P;
@@ -118,7 +119,7 @@ class Block<P extends Record<string, any> = any> {
     }
   }
 
-  protected componentDidUpdate(_oldProps: P, _newProps: P) {
+  protected componentDidUpdate(_oldProps: P, _newProps: P): boolean {
     return true;
   }
 
@@ -138,7 +139,7 @@ class Block<P extends Record<string, any> = any> {
     return this._element;
   }
 
-  private _render() {
+  private _render(): void {
     const fragment = this.render();
     this._removeEvents();
     const newElement = fragment.firstElementChild as HTMLElement;
@@ -149,36 +150,32 @@ class Block<P extends Record<string, any> = any> {
     this._addEvents();
   }
 
-  public compile(template: string, context: any): DocumentFragment {
-    const contextAndDummies = { ...context };
-
+  public compile(template: string, context: any) {
+    const contextAndStubs = { ...context };
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
-        contextAndDummies[name] = component.map((child) => `<div data-id="${child.id}"></div>`);
+        contextAndStubs[name] = component.map((child) => `<div data-id="${child.id}"></div>`);
       } else {
-        contextAndDummies[name] = `<div data-id="${component.id}"></div>`;
+        contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
       }
     });
-    const html = Handlebars.compile(template)(contextAndDummies);
-
+    const html = Handlebars.compile(template)(contextAndStubs);
     const temp = document.createElement('template');
     temp.innerHTML = html;
-
-    const replaceBase = (component: any) => {
-      const dummy = temp.content.querySelector(`[data-id="${component.id}"]`);
-      if (dummy == null) {
+    const replaceStub = (component: Block) => {
+      const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+      if (!stub) {
         return;
       }
-
-      component.getContent()?.append(...Array.from(dummy.childNodes));
-      dummy.replaceWith(component.getContent());
+      component.getContent()?.append(...Array.from(stub.childNodes));
+      stub.replaceWith(component.getContent()!);
     };
 
     Object.entries(this.children).forEach(([_, component]) => {
       if (Array.isArray(component)) {
-        component.forEach((comp) => replaceBase(comp));
+        component.forEach(replaceStub);
       } else {
-        replaceBase(component);
+        replaceStub(component);
       }
     });
 

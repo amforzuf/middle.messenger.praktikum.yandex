@@ -27,7 +27,7 @@ export default class HTTPTransport {
   }
 
   // eslint-disable-next-line default-param-last
-  public get: HTTPMethod = (path = '/', data) => {
+  public get: HTTPMethod = (path, data) => {
     const query = data ? queryStringify(data) : '';
 
     return this.request(`${this.endpoint}${path}?${query}`);

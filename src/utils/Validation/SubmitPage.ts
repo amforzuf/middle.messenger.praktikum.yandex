@@ -82,33 +82,6 @@ export abstract class SubmitPage extends Block {
           console.log('valid:', isValid);
           if (isValid) {
             func.call(this, new FormData(this.getContent()!.querySelector('form')!));
-
-            // if (options === 'profilePage') {
-            //   this.children.loginInput.props.disabled = true;
-            //   this.children.loginInput.props.hide = false;
-            //   this.children.passwordInput.props.disabled = true;
-            //   this.children.passwordInput.props.hide = true;
-
-            //   this.children.saveButton.props.disabled = true;
-
-            //   this.children.emailInput.props.disabled = true;
-            //   this.children.firstNameInput.props.disabled = true;
-            //   this.children.secondNameInput.props.disabled = true;
-            //   this.children.displayNameInput.props.disabled = true;
-            //   this.children.phoneInput.props.disabled = true;
-
-            //   this.children.oldPasswordInput.props.disabled = true;
-            //   this.children.passwordRepeatInput.props.disabled = true;
-
-            //   this.children.emailInput.props.hide = false;
-            //   this.children.firstNameInput.props.hide = false;
-            //   this.children.secondNameInput.props.hide = false;
-            //   this.children.displayNameInput.props.hide = false;
-            //   this.children.phoneInput.props.hide = false;
-
-            //   this.children.oldPasswordInput.props.hide = true;
-            //   this.children.passwordRepeatInput.props.hide = true;
-            // }
           }
           return false;
         },

@@ -6,7 +6,7 @@ export class Validation {
     if (!isEmpty) {
       _input.removeError();
     } else {
-      _input.setError('Input cannot be empty');
+      _input.setError('Поле не должно быть пустым');
     }
     return isEmpty;
   }
@@ -37,7 +37,9 @@ export class Validation {
     if (res) {
       _input.removeError();
     } else {
-      _input.setError('Invalid name format');
+      _input.setError(
+        'Первая буква должна быть заглавной, без пробелов и без цифр, нет спецсимволов'
+      );
     }
   }
 
@@ -47,7 +49,9 @@ export class Validation {
     if (res) {
       _input.removeError();
     } else {
-      _input.setError('Invalid login format');
+      _input.setError(
+        'От 3 до 20 символов, латиница, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов'
+      );
     }
   }
 
@@ -57,7 +61,7 @@ export class Validation {
     if (res) {
       _input.removeError();
     } else {
-      _input.setError('Invalid email format');
+      _input.setError('Неправильный формат email');
     }
   }
 
@@ -67,7 +71,7 @@ export class Validation {
     if (res) {
       _input.removeError();
     } else {
-      _input.setError('Invalid password format');
+      _input.setError('От 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра');
     }
   }
 
@@ -77,7 +81,7 @@ export class Validation {
     if (res) {
       _input.removeError();
     } else {
-      _input.setError('Invalid phone format');
+      _input.setError('От 10 до 15 символов, состоит из цифр, может начинается с плюса');
     }
   }
 
@@ -86,7 +90,7 @@ export class Validation {
     if (!isEmpty) {
       _input.removeError();
     } else {
-      _input.setError('Message cannot be empty');
+      _input.setError('Поле не должно быть пустым');
     }
     return isEmpty;
   }

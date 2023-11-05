@@ -39,19 +39,6 @@ export class AuthInput extends Block<AuthInputProps> {
     });
   }
 
-  // public _removeEvents() {
-  //   const { events = {} } = this.props;
-
-  //   if (events !== null && events !== undefined) {
-  //     Object.keys(events).forEach((eventName) => {
-  //       ((this.element as HTMLInputElement)?.getElementsByTagName('input')[0]).removeEventListener(
-  //         eventName,
-  //         events[eventName as keyof typeof events]
-  //       );
-  //     });
-  //   }
-  // }
-
   render() {
     return this.compile(tmpl, { ...this.props });
   }

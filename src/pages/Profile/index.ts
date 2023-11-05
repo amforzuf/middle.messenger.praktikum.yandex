@@ -25,10 +25,6 @@ export class Profile extends SubmitPage {
     }, 'ProfilePage');
   }
 
-  componentDidMount(): void {
-    AuthController.fetchUser();
-  }
-
   init() {
     this.children.profileAvatar = new Avatar({
       username: `${store.getState().user?.first_name} ${store.getState().user?.second_name}`,

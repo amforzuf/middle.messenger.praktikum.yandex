@@ -1,10 +1,10 @@
-import { Block } from '../Block';
+import Block from '../Block';
 
 function isEqual(lhs: string, rhs: string): boolean {
   return lhs === rhs;
 }
 
-function render(query: string, block: Block) {
+export function render(query: string, block: Block) {
   const root = document.querySelector(query);
 
   if (root === null) {

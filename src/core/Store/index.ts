@@ -3,7 +3,6 @@ import { User } from '../../api/AuthAPI';
 import { Chats } from '../../api/ChatsAPI';
 import { EventBus } from '../EventBus';
 import { set } from '../../utils/setAndMerge';
-import Block from '../Block';
 import { Message } from '../../types/interfacesApi';
 
 export interface State {
@@ -36,20 +35,5 @@ class Store extends EventBus {
 }
 
 const store = new Store();
-
-export function withStore(mapStateToProps: (state: State) => any) {
-  return (Component: typeof Block) => {
-    return class extends Component {
-      constructor(props: any) {
-        super({ ...props, ...mapStateToProps(store.getState()) });
-
-        store.on(StorageEvent.UpdatedState, () => {
-          const propsFromState = mapStateToProps(store.getState());
-          this.setProps(propsFromState);
-        });
-      }
-    };
-  };
-}
 
 export default store;
