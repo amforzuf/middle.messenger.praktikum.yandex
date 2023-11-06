@@ -1,13 +1,23 @@
 /* eslint-disable import/no-duplicates */
 import { Chats } from '../../../api/ChatsAPI';
 import Block from '../../../core/Block';
-import { withChats, withMessages, withSelectedChat } from '../../../core/Store/withStore';
+import {
+  withChats,
+  withMessages,
+  withSelectedChat,
+  withWrittenMessage,
+} from '../../../core/Store/withStore';
 import { IconButton } from '../IconButton';
 import { tmpl } from './activeChat.tmpl';
 import { Messages } from '../Messages';
 import { isEqual } from '../../../utils/commonUtils';
+import Validation from '../../../utils/Validation/Validation';
 
 import './styles.scss';
+import { AuthInput } from '../../Forms/AuthInput';
+import { SendButton } from '../SendButton';
+import MessagesController from '../../../controllers/MessagesController';
+import { SendMessageInput } from '../SendMessegeInput';
 
 export class ActiveChatClass extends Block {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -30,7 +40,27 @@ export class ActiveChatClass extends Block {
         click: () => this.openModel('modal-window-delete-member'),
       },
     });
+    this.children.messageInput = new SendMessageInput({
+      events: {
+        blur: () => {
+          Validation.isEmptyInput(this.children.modalInput as AuthInput);
+        },
+      },
+      keyboardEvents: {
+        keydown: (e: KeyboardEvent) => this.sendMessage(e),
+      },
+    });
+    this.children.sendBtn = new SendButton({
+      class: 'send-btn',
+    });
   }
+
+  sendMessage = async (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      const input = e.target as HTMLInputElement;
+      MessagesController.sendMessage(this.props.selectedChat, input.value);
+    }
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   componentDidUpdate(oldProps: any, newProps: any): boolean {
@@ -51,7 +81,7 @@ export class ActiveChatClass extends Block {
             if (messagesContainer != null) {
               messagesContainer.scrollTop = messagesContainer.scrollHeight;
             }
-          }, 0);
+          }, 100);
         }
       }
       return true;
@@ -74,4 +104,6 @@ export class ActiveChatClass extends Block {
   }
 }
 
-export const ActiveChat = withChats(withMessages(withSelectedChat(ActiveChatClass)));
+export const ActiveChat = withChats(
+  withMessages(withSelectedChat(withWrittenMessage(ActiveChatClass)))
+);

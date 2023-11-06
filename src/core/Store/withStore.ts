@@ -34,3 +34,5 @@ export const withChats = withStore((state) => ({ chats: state.chats }));
 export const withMessages = withStore((state) => ({ messages: state.messages }));
 
 export const withSelectedChat = withStore((state) => ({ selectedChat: state.selectedChat }));
+
+export const withWrittenMessage = withStore((state) => ({ writtenMessage: state.writtenMessage }));

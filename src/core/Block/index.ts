@@ -123,12 +123,12 @@ class Block<P extends Record<string, any> = any> {
     return true;
   }
 
-  setProps = (nextProps: Partial<P>) => {
-    if (!nextProps) {
+  public setProps = (nextProps: P): void => {
+    if (nextProps == null) {
       return;
     }
-
     Object.assign(this.props, nextProps);
+    this._componentDidUpdate(this.props, nextProps);
   };
 
   getProps() {

@@ -21,9 +21,7 @@ export const tmpl = `
             </div>
             <form class='message-form'>
               {{{messageInput}}}
-              <button class='send-btn' type='submit'>
-                <div class='send-btn-img'></div>
-              </button>
+              {{{sendBtn}}}
             </form>
           </div>
         </div>

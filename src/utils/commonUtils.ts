@@ -60,6 +60,7 @@ export function isEqual(lhs: PlainObject, rhs: PlainObject): boolean {
     const rightValue = rhs[key];
     if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
       if (isEqual(value, rightValue)) {
+        // eslint-disable-next-line no-continue
         continue;
       }
 

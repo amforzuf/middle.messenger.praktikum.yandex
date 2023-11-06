@@ -11,6 +11,7 @@ export interface State {
   selectedChat: Chats['id'] | null;
   messages?: Record<Chats['id'], Message[]>;
   chatUsers?: any;
+  writtenMessage?: string | null;
 }
 
 export enum StorageEvent {
