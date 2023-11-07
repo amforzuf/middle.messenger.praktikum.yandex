@@ -28,7 +28,7 @@ export class ChangeAvatar extends Block {
     this.children.cancelBatton = new Link({
       linkText: 'Назад',
       class: 'back-link',
-      to: '/profile',
+      to: '/settings',
     });
 
     this.children.saveButton = new Button({

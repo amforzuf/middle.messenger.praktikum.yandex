@@ -15,7 +15,7 @@ import './style.scss';
 export enum Routes {
   Index = '/',
   Register = '/sign-up',
-  Profile = '/profile',
+  Profile = '/settings',
   ServerError = '/serverError',
   NotFound = '/notFound',
   ChangePassword = '/change_password',

@@ -14,7 +14,7 @@ export default class UserInfo extends Block {
       class: 'user-info-avatar',
     });
     this.children.profileLink = new Link({
-      to: '/profile',
+      to: '/settings',
     });
   }
 
