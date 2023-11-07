@@ -1,11 +1,9 @@
+import { Chats } from '../../../api/ChatsAPI';
+
 export type ChatListItemProps = {
-  id: number;
-  imgSrc?: string;
-  letters?: string;
-  addressee: string;
-  date: string;
-  you?: string;
-  messege: string;
-  counter?: string;
-  onClick?: unknown;
+  chat: Chats;
+  selectedChat: Chats['id'];
+  events?: Record<string, (args: unknown) => void>;
+  class?: string;
+  id: string;
 };

@@ -1,40 +1,69 @@
-/* eslint-disable no-else-return */
-import { NotFound } from './pages/NotFound';
-import './style.scss';
-import { Block } from './utils/Block';
-import { Main } from './pages/Main';
-import { ServerError } from './pages/ServerError';
-import { Login } from './pages/Login';
-import { Registration } from './pages/Registration';
+/* eslint-disable no-console */
 import { Profile } from './pages/Profile';
+import { SignUp } from './pages/SignUp';
+import { SignIn } from './pages/SignIn';
+import { ServerError } from './pages/ServerError';
+import { NotFound } from './pages/NotFound';
 import { ChangePassword } from './pages/ChangePassword';
+import { ChangeAvatar } from './pages/ChangeAvatar';
 import { Chat } from './pages/Chat';
+import { router } from './core/Router/Router';
+import AuthController from './controllers/AuthController';
+import ChatsController from './controllers/ChatsController';
+import './style.scss';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const root = document.querySelector('#app')!;
-  const getPage = () => {
-    const path = window.location.pathname;
-    switch (path) {
-      case '/':
-        return Main;
-      case '/serverError':
-        return ServerError;
-      case '/login':
-        return Login;
-      case '/registration':
-        return Registration;
-      case '/profile':
-        return Profile;
-      case '/change_password':
-        return ChangePassword;
-      case '/chat':
-        return Chat;
+export enum Routes {
+  Index = '/',
+  Register = '/sign-up',
+  Profile = '/settings',
+  ServerError = '/serverError',
+  NotFound = '/notFound',
+  ChangePassword = '/change_password',
+  ChangeAvatar = '/change_avatar',
+  Messenger = '/messenger',
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  const root = document.getElementById('app');
+  if (root) {
+    router
+      .use(Routes.Index, SignIn)
+      .use(Routes.Profile, Profile)
+      .use(Routes.Register, SignUp)
+      .use(Routes.NotFound, NotFound)
+      .use(Routes.ServerError, ServerError)
+      .use(Routes.ChangePassword, ChangePassword)
+      .use(Routes.Messenger, Chat)
+      .use(Routes.ChangeAvatar, ChangeAvatar);
+
+    // eslint-disable-next-line prefer-const
+    let isProtectedRoute = true;
+
+    switch (window.location.pathname) {
+      case Routes.Index:
+      case Routes.Register:
+        isProtectedRoute = false;
+        break;
       default:
-        return NotFound;
+        break;
     }
-  };
 
-  const page: Block<object> = getPage();
-  root.append(page.element as HTMLElement);
-  page.dispatchComponentDidMount();
+    try {
+      await AuthController.fetchUser();
+      await ChatsController.getChats();
+
+      router.start();
+
+      if (!isProtectedRoute) {
+        router.go(Routes.Profile);
+      }
+    } catch (e) {
+      console.log(e, 'Here');
+      router.start();
+
+      if (isProtectedRoute) {
+        router.go(Routes.Index);
+      }
+    }
+  }
 });

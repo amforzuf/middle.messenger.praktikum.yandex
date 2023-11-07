@@ -4,9 +4,9 @@ export const tmpl = `
     <div class="profile-top-container">
       {{{profileAvatar}}}
       <div class="change-btns">
-        <p>Изменить аватарку</p>
-        <a id='changePasswordButton' href="change_password">Изменить пароль</a>
-        <a href="login">Выйти</a>
+        {{{changeAvatarLink}}}
+        {{{changePasswordLink}}}
+        {{{logoutButton}}}
       </div>
     </div>
     <form>

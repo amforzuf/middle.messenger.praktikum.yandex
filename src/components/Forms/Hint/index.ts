@@ -1,14 +1,29 @@
-import { Block } from '../../../utils/Block';
+import Block from '../../../core/Block';
 import { tmpl } from './hint.tmpl';
 import './style.scss';
 import { HintProps } from './types';
+import { withRouter } from '../../../hocs/withRouter';
 
-export class Hint extends Block<HintProps> {
+class BaseHint extends Block<HintProps> {
   constructor(props: HintProps) {
-    super(props, 'div');
+    super({
+      ...props,
+      events: {
+        click: (event) => {
+          event.preventDefault();
+          this.navigate();
+        },
+      },
+    });
+  }
+
+  navigate() {
+    this.props.router.go(this.props.to);
   }
 
   render() {
-    return this.compile(tmpl, this.props);
+    return this.compile(tmpl, { ...this.props });
   }
 }
+
+export const Hint = withRouter(BaseHint);
