@@ -15,7 +15,7 @@ class AuthController {
       await this.fetchUser();
       await ChatsController.getChats();
 
-      router.go('/profile');
+      router.go(Routes.Profile);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +26,7 @@ class AuthController {
       await this.api.signup(data);
       await this.fetchUser();
       await ChatsController.getChats();
-      router.go('/profile');
+      router.go(Routes.Profile);
     } catch (error) {
       console.log(error);
     }
