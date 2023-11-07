@@ -1,7 +1,7 @@
 import { AuthInput } from '../../components/Forms/AuthInput';
 import { tmpl } from './changePassword.tmpl';
 import { Button } from '../../components/Forms/Button';
-import Validation from '../../utils/Validation/Validation';
+import Validation from '../../utils/Validation/ValidationRules';
 import AuthController from '../../controllers/AuthController';
 import UsersController from '../../controllers/UsersController';
 import SubmitPage from '../../utils/Validation/SubmitPage';

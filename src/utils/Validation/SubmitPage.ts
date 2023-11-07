@@ -1,6 +1,6 @@
 /* eslint-disable no-fallthrough */
 import Block from '../../core/Block';
-import Validation from './Validation';
+import Validation from './ValidationRules';
 import { SubmitPageProps } from './types';
 
 export abstract class SubmitPage extends Block {

@@ -6,7 +6,7 @@ import { Button } from '../../components/Forms/Button';
 import AuthController from '../../controllers/AuthController';
 import SubmitPage from '../../utils/Validation/SubmitPage';
 import { SignInData } from '../../api/AuthAPI';
-import Validation from '../../utils/Validation/Validation';
+import Validation from '../../utils/Validation/ValidationRules';
 
 export class SignIn extends SubmitPage {
   constructor() {

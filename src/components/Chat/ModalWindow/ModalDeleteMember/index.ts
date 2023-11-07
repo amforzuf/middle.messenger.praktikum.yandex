@@ -4,7 +4,7 @@ import { ModalProps } from '../types';
 import '../style.scss';
 import { ModalCloseButton } from '../ModalClose';
 import { AuthInput } from '../../../Forms/AuthInput';
-import Validation from '../../../../utils/Validation/Validation';
+import Validation from '../../../../utils/Validation/ValidationRules';
 import { Button } from '../../../Forms/Button';
 import ChatsController from '../../../../controllers/ChatsController';
 import store from '../../../../core/Store';

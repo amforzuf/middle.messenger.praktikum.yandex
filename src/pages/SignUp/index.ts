@@ -5,7 +5,7 @@ import AuthController from '../../controllers/AuthController';
 import { tmpl } from './signup.tmpl';
 import { Hint } from '../../components/Forms/Hint';
 import { Button } from '../../components/Forms/Button';
-import Validation from '../../utils/Validation/Validation';
+import Validation from '../../utils/Validation/ValidationRules';
 import { SignUpData } from '../../api/AuthAPI';
 
 export class SignUp extends SubmitPage {
