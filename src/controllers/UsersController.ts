@@ -8,9 +8,10 @@ import {
   SearchData,
   UsersResponse,
 } from '../api/UsersApi';
-import Router from '../core/Router';
+import { router } from '../core/Router/Router';
 import AuthController from './AuthController';
 import ChatsController from './ChatsController';
+import { Routes } from '..';
 
 class UsersController {
   private api = new UsersAPI();
@@ -20,7 +21,7 @@ class UsersController {
       await this.api.profileInfoChange(data);
       await AuthController.fetchUser();
       await ChatsController.getChats();
-      Router.go('/messenger');
+      router.go('/messenger');
     } catch (error) {
       console.log(error);
     }
@@ -30,7 +31,7 @@ class UsersController {
     try {
       await this.api.profilePasswordChange(data);
       await AuthController.fetchUser();
-      Router.go('/profile');
+      router.go(Routes.Profile);
     } catch (error) {
       console.log(error);
     }
@@ -48,10 +49,9 @@ class UsersController {
     try {
       await this.api.avatarChange(data);
       await AuthController.fetchUser();
-      Router.go('/profile');
+      router.go(Routes.Profile);
     } catch (error) {
       console.log(error);
-      Router.go('/500');
     }
   }
 }

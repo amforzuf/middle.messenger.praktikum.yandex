@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 import { AuthAPI, SignInData, SignUpData } from '../api/AuthAPI';
-import Router from '../core/Router';
+import { router } from '../core/Router/Router';
 import store from '../core/Store';
 import ChatsController from './ChatsController';
+import { Routes } from '..';
 
 class AuthController {
   private api = new AuthAPI();
@@ -14,7 +15,7 @@ class AuthController {
       await this.fetchUser();
       await ChatsController.getChats();
 
-      Router.go('/profile');
+      router.go('/profile');
     } catch (error) {
       console.log(error);
     }
@@ -25,18 +26,18 @@ class AuthController {
       await this.api.signup(data);
       await this.fetchUser();
       await ChatsController.getChats();
-      Router.go('/profile');
+      router.go('/profile');
     } catch (error) {
       console.log(error);
     }
   }
 
-  async logout() {
+  async logout(): Promise<void> {
     try {
       await this.api.logout();
       store.set('user', undefined);
       store.set('chats', undefined);
-      Router.go('/');
+      router.go(Routes.Index);
     } catch (error) {
       console.log(error);
     }

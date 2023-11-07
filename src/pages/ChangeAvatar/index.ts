@@ -35,7 +35,6 @@ export class ChangeAvatar extends Block {
       buttonTitle: 'Изменить',
       type: '',
       class: 'profile-save-button',
-      disabled: false,
       events: {
         click: (event: Event) => {
           event.preventDefault();

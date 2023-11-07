@@ -46,8 +46,8 @@ export class Profile extends SubmitPage {
       class: 'just-text',
       buttonTitle: 'Выйти',
       events: {
-        click: () => {
-          AuthController.logout();
+        click: async () => {
+          await AuthController.logout();
         },
       },
     });

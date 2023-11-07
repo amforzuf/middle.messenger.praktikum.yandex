@@ -1,5 +1,5 @@
 import Block from '../core/Block';
-import router from '../core/Router';
+import { router } from '../core/Router/Router';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function withRouter(Component: typeof Block<any>) {

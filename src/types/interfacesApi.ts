@@ -9,28 +9,6 @@ export interface User extends StringIndexed {
   email: string;
 }
 
-export interface Chat {
-  id: number;
-  title: string;
-  avatar: string;
-  unread_count: number;
-  created_by: number;
-  last_message: {
-    user: {
-      id: number;
-      first_name: string;
-      second_name: string;
-      display_name: string;
-      avatar: string;
-      email: string;
-      login: string;
-      phone: string;
-    };
-    time: string;
-    content: string[] | string;
-  };
-}
-
 export interface Message {
   chat_id: number;
   time: Date;
@@ -48,11 +26,6 @@ export interface Message {
     content_size: number;
     upload_date: string;
   };
-}
-
-export interface ChangePasswordRequestData {
-  oldPassword: string;
-  newPassword: string;
 }
 
 export interface RequestOptions {

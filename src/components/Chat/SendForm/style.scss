@@ -1,0 +1,33 @@
+.message-form {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  .send-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #7298FB;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    transition: 0.3s;
+
+    .send-btn-img {
+      width: 17px;
+      margin-top: 3px;
+      height: 17px;
+      background-image: url('data:image/svg+xml, <svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg"> <path stroke="rgb(244, 238, 224)" fill="none" d="M6.99388 10.0061L16 1M6.99388 10.0061L9.85946 15.7373C9.89538 15.8157 9.95306 15.8821 10.0256 15.9287C10.0982 15.9752 10.1826 16 10.2688 16C10.3551 16 10.4395 15.9752 10.512 15.9287C10.5846 15.8821 10.6423 15.8157 10.6782 15.7373L16 1M6.99388 10.0061L1.26271 7.14054C1.18432 7.10462 1.1179 7.04694 1.07133 6.97438C1.02476 6.90181 1 6.81739 1 6.73117C1 6.64494 1.02476 6.56053 1.07133 6.48796C1.1179 6.41539 1.18432 6.35772 1.26271 6.3218L16 1" /></svg>');
+    }
+
+    &:hover {
+      background-color: var(--violet);
+    }
+  }
+}

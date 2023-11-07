@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import { CreateChat, DeleteChat, ChatsAPI, UsersData, UserResponse, Chats } from '../api/ChatsAPI';
+import { CreateChat, DeleteChat, ChatsAPI, UserResponse, Chats } from '../api/ChatsAPI';
 import store from '../core/Store';
 import MessagesController from './MessagesController';
-import Router from '../core/Router';
+import { router } from '../core/Router/Router';
 
 class ChatsController {
   private api = new ChatsAPI();
@@ -10,13 +10,11 @@ class ChatsController {
   async getChats(data?: StringIndexed): Promise<void> {
     try {
       const chats = await this.api.getChats(data);
-      console.log(chats);
       chats.map(async (chat) => {
         const token = await this.getToken(chat.id);
         await MessagesController.connect(chat.id, token as string);
       });
       store.set('chats', chats);
-      console.log(store.getState().chats);
     } catch (error) {
       console.log(error);
     }
@@ -30,7 +28,7 @@ class ChatsController {
     try {
       await this.api.create(data);
       await this.getChats();
-      Router.go('/messenger');
+      router.go('/messenger');
     } catch (error) {
       console.error(error);
     }

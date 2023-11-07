@@ -19,10 +19,7 @@ export const tmpl = `
             <div class='media-add'>
               <div class='media-add-icon'></div>
             </div>
-            <form class='message-form'>
-              {{{messageInput}}}
-              {{{sendBtn}}}
-            </form>
+            {{{form}}}
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ export type ButtonProps = {
   disabled?: () => boolean;
   events?: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    click: (e: any) => void;
+    click: (e: Event) => void;
     submit?: () => void;
   };
 };

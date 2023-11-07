@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import WSTransport, { WSTransportEvents } from '../core/WSTransport';
 import store from '../core/Store';
+import ChatsController from './ChatsController';
 
 export interface Message {
   chat_id: number;
@@ -87,6 +88,7 @@ class MessagesController {
       messagesToAdd = [...currentMessages, ...messagesToAdd];
 
       store.set(`messages.${id}`, messagesToAdd);
+      ChatsController.getChats();
     } catch (error) {
       console.error(error);
     }

@@ -81,12 +81,23 @@ class Block<P extends Record<string, any> = any> {
     });
   }
 
-  _removeEvents() {
+  private _removeEvents() {
     if (this.props.events !== null && this.props.events !== undefined) {
       Object.keys(this.props.events).forEach((eventName) => {
         this._element?.removeEventListener(eventName, this.props.events[eventName]);
       });
     }
+  }
+
+  public removeEvents(): void {
+    this._removeEvents();
+    Object.keys(this.children).forEach((child) => {
+      if (Array.isArray(this.children[child])) {
+        (this.children[child] as Block<P>[]).forEach((ch) => ch.removeEvents());
+      } else {
+        (this.children[child] as Block<P>).removeEvents();
+      }
+    });
   }
 
   private _init() {
@@ -135,7 +146,7 @@ class Block<P extends Record<string, any> = any> {
     return this.props;
   }
 
-  get element() {
+  public get element(): HTMLElement | null {
     return this._element;
   }
 

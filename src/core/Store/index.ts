@@ -27,10 +27,6 @@ class Store extends EventBus {
 
   set(path: string, value: unknown) {
     set(this.state, path, value);
-
-    // eslint-disable-next-line no-console
-    console.log(this.state);
-
     this.emit(StorageEvent.UpdatedState, this.state);
   }
 }
