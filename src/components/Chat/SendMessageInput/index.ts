@@ -1,7 +1,6 @@
 import Block from '../../../core/Block';
 import { tmpl } from './sendMessageInput.tmpl';
 import { SendInputProps } from './types';
-import './style.scss';
 
 export class SendMessageInput extends Block<SendInputProps> {
   public constructor({ name, isAutofocus = false, events = {}, value = '' }: SendInputProps) {
