@@ -8,8 +8,8 @@ export abstract class SubmitPage extends Block {
     const props: SubmitPageProps = {
       options,
       events: {
-        submit: (evt) => {
-          evt.preventDefault();
+        submit: (e: Event) => {
+          e.preventDefault();
           let isValid = true;
           // eslint-disable-next-line no-unsafe-optional-chaining
           for (const item of this.props?.checkInput) {
