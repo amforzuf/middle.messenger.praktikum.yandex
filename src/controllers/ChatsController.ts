@@ -46,6 +46,14 @@ class ChatsController {
     this.api.addUsers(id, [userId]);
   }
 
+  async avatarChange(id: Chats['id'], avatarData: File) {
+    try {
+      await this.api.changeAvatar(id, avatarData);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async getUsers(id: number) {
     try {
       let users: UserResponse[] = await this.api.getUsers(id);

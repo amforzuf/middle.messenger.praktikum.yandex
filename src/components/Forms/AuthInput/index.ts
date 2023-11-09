@@ -4,8 +4,7 @@ import { AuthInputProps } from './types';
 
 export class AuthInput extends Block<AuthInputProps> {
   public getValue() {
-    this.props.value = (this.element as HTMLInputElement).getElementsByTagName('input')[0].value;
-    return this.props.value;
+    return (this.element as HTMLInputElement).getElementsByTagName('input')[0].value;
   }
 
   public setValue(value: string) {

@@ -1,5 +1,5 @@
 export const tmpl = `
-<div class='modal-container' id="modal-window-{{modalFormId}}">
+<div class='modal-container {{class}}' id="modal-window-{{modalFormId}}">
   <div" class="modal-window">
     <div class='modal-header'>
       <h3 class='modal-title'>{{{modalTitle}}}</h3>

@@ -7,6 +7,7 @@ export type AuthInputProps = {
   validationError?: boolean;
   validationErrorMessage?: string;
   hide?: boolean;
+  onkeydown?: (e: KeyboardEvent) => void;
 
   events?: {
     blur: () => void;

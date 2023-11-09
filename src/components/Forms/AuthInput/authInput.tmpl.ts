@@ -1,7 +1,7 @@
 export const tmpl = `
 <div>
   <input
-    class="form-input {{class}}"z
+    class="form-input {{class}}"
     id="{{name}}"
     autofocus
     name="{{name}}"

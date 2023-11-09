@@ -11,5 +11,6 @@ export const tmpl = `
       {{{modalDeleteChat}}}
       {{{modalAddMember}}}
       {{{modalDeleteMember}}}
+      {{{modalChangeChatAvatar}}}
     </div>
 `;
