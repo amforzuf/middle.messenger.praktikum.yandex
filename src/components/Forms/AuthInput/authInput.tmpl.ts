@@ -3,6 +3,7 @@ export const tmpl = `
   <input
     class="form-input {{class}}"
     id="{{name}}"
+    autofocus
     name="{{name}}"
     placeholder="{{placeholder}}"
     type="{{type}}"

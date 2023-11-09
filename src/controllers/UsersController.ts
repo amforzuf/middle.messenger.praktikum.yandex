@@ -40,8 +40,8 @@ class UsersController {
   async search(data: SearchData): Promise<UsersResponse | void> {
     try {
       await this.api.search(data);
-    } catch (e: any) {
-      console.error(e.reason);
+    } catch (error) {
+      console.error(error);
     }
   }
 

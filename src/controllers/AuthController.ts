@@ -35,8 +35,6 @@ class AuthController {
   async logout(): Promise<void> {
     try {
       await this.api.logout();
-      store.set('user', undefined);
-      store.set('chats', undefined);
       router.go(Routes.Index);
     } catch (error) {
       console.log(error);
