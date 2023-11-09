@@ -70,17 +70,6 @@ export abstract class SubmitPage extends Block {
     };
     super(props);
   }
-
-  // componentDidMount() {
-  //   this.getContent()!
-  //     .querySelector('form')!
-  //     .addEventListener('keydown', (event) => {
-  //       if (event.key === 'Enter') {
-  //         event.preventDefault();
-  //         this.getContent()!.querySelector('form')!.dispatchEvent(new Event('submit'));
-  //       }
-  //     });
-  // }
 }
 
 export default SubmitPage;
