@@ -8,12 +8,22 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "npx eslint --ext .js,.ts,.tsx,.jsx src && npx stylelint \"**/*.scss\" && npx tsc --noEmit",
-    "lint:fix": "npx eslint --ext .js,.ts,.tsx,.jsx src --fix && npx stylelint \"**/*.scss\" --fix"
+    "lint:fix": "npx eslint --ext .js,.ts,.tsx,.jsx src --fix && npx stylelint \"**/*.scss\" --fix",
+    "prepare": "husky install",
+    "test": "mocha"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "@types/sinon-chai": "^3.2.9",
+    "chai": "^4.3.8",
+    "mocha": "^10.2.0",
+    "jsdom": "^22.1.0",
+    "sinon": "^15.2.0",
+    "sinon-chai": "^3.7.0",
     "eslint": "^8.50.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-prettier": "^5.0.0",
@@ -30,6 +40,7 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "husky": "^8.0.0",
     "handlebars": "^4.7.8",
     "sass": "^1.68.0",
     "uuid": "^9.0.1",
