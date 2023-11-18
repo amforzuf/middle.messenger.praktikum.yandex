@@ -16,6 +16,7 @@
     "esModuleInterop": true,
     "noUnusedParameters": true,
     "noImplicitAny": true,
+    "sourceMap": true,
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src", "server.mjs"]
