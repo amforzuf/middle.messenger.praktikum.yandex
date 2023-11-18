@@ -1,0 +1,13 @@
+@import './../../globalstyles';
+
+.login-page {
+  display: flex;
+  box-sizing: border-box;
+  width: 540px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 24px 60px;
+  border-radius: 5px;
+  border: 1px solid var(--violet);
+}

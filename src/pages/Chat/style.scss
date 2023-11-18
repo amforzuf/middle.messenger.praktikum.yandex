@@ -7,7 +7,7 @@
   height: 100vh;
   align-items: flex-start;
   justify-content: flex-start;
-  border-radius: 10px;
+  border-radius: 5px;
   flex-direction: row;
 }
 
@@ -28,211 +28,6 @@
   }
 }
 
-.chat-window {
-  height: 100%;
-  width: calc(100% - 430px);
-  background-color: var(--violet-chat);
-  display: flex;
-  flex-direction: column;
-  border-left: 1px solid #f4eee033;
-
-  .no-addressees {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-      font-size: 20px;
-      font-weight: 200;
-    }
-  }
-
-  .chat-window-top {
-    height: var(--chat-addressee-block-height);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--violet-dark);
-
-    .addressee-top-container {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      width: 1000px;
-      margin: 0;
-
-      p {
-        font-size: 14px;
-      }
-    }
-  }
-
-  .chat-window-center {
-    display: flexbox;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: 1000px;
-    height: 100%;
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-      width: 0;
-      background: transparent;
-    }
-
-    .chat-date {
-      display: flex;
-      align-items: flex-start;
-      width: 100%;
-      justify-content: flex-start;
-      margin-bottom: 10px;
-      margin-top: 20px;
-
-      p {
-        font-size: 14px;
-        padding: 5px 10px;
-        background-color: var(--violet-dark);
-        border-radius: 5px;
-      }
-    }
-
-    .message-container {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 10px;
-
-    }
-
-    .message {
-      border-radius: 10px;
-      display: flex;
-      margin: 0;
-      padding: 7px 0 8px 15px;
-      max-width: 40vw;
-
-      .chat-message {
-        font-size: 14px;
-        margin-right: 10px;
-        line-height: 140%;
-        text-align: justify;
-      }
-    }
-
-    .message-time {
-      object-fit: cover;
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-      margin-right: 8px;
-      margin-bottom: -1px;
-
-      p {
-        font-size: 12px;
-        font-weight: 200;
-      }
-    }
-
-    .read {
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-
-
-      .read-icon {
-        width: 25px;
-        height: 18px;
-        margin-bottom: -4px;
-        background-image: url('data:image/svg+xml, <svg viewBox="0 0 29 18" xmlns="http://www.w3.org/2000/svg"> <path fill="rgb(244, 238, 224)" d="M6.75011 12.1276L4.14761 9.52512C4.00738 9.38489 3.81718 9.3061 3.61886 9.3061C3.42054 9.3061 3.23034 9.38489 3.09011 9.52512C2.94988 9.66535 2.87109 9.85555 2.87109 10.0539C2.87109 10.1521 2.89044 10.2493 2.92801 10.34C2.96559 10.4307 3.02067 10.5132 3.09011 10.5826L6.22511 13.7176C6.51761 14.0101 6.99011 14.0101 7.28261 13.7176L15.2176 5.78262C15.3578 5.64239 15.4366 5.45219 15.4366 5.25387C15.4366 5.05555 15.3578 4.86535 15.2176 4.72512C15.0774 4.58489 14.8872 4.5061 14.6889 4.5061C14.4905 4.5061 14.3003 4.58489 14.1601 4.72512L6.75011 12.1276Z" /><path fill="rgb(244, 238, 224)" d="M17.7501 12.1276L15.1476 9.52512C15.0074 9.38489 14.8172 9.3061 14.6189 9.3061C14.4205 9.3061 14.2303 9.38489 14.0901 9.52512C13.9499 9.66535 13.8711 9.85555 13.8711 10.0539C13.8711 10.1521 13.8904 10.2493 13.928 10.34C13.9656 10.4307 14.0207 10.5132 14.0901 10.5826L17.2251 13.7176C17.5176 14.0101 17.9901 14.0101 18.2826 13.7176L26.2176 5.78262C26.3578 5.64239 26.4366 5.45219 26.4366 5.25387C26.4366 5.05555 26.3578 4.86535 26.2176 4.72512C26.0774 4.58489 25.8872 4.5061 25.6889 4.5061C25.4905 4.5061 25.3003 4.58489 25.1601 4.72512L17.7501 12.1276Z" /></svg>');
-      }
-    }
-
-    .unread {
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-
-      .unread-icon {
-        width: 18px;
-        margin-bottom: -3px;
-        height: 18px;
-        background-image: url('data:image/svg+xml, <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"> <path fill="rgb(151, 158, 150)" d="M6.75011 12.1276L4.14761 9.52512C4.00738 9.38489 3.81718 9.3061 3.61886 9.3061C3.42054 9.3061 3.23034 9.38489 3.09011 9.52512C2.94988 9.66535 2.87109 9.85555 2.87109 10.0539C2.87109 10.1521 2.89044 10.2493 2.92801 10.34C2.96559 10.4307 3.02067 10.5132 3.09011 10.5826L6.22511 13.7176C6.51761 14.0101 6.99011 14.0101 7.28261 13.7176L15.2176 5.78262C15.3578 5.64239 15.4366 5.45219 15.4366 5.25387C15.4366 5.05555 15.3578 4.86535 15.2176 4.72512C15.0774 4.58489 14.8872 4.5061 14.6889 4.5061C14.4905 4.5061 14.3003 4.58489 14.1601 4.72512L6.75011 12.1276Z" /></svg>');
-      }
-    }
-  }
-
-  .chat-window-bottom {
-    display: flex;
-    height: 70px;
-    width: 100%;
-    background-color: var(--violet-dark);
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-
-    .chat-window-bottom-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      width: 1000px;
-
-      .media-add {
-        cursor: pointer;
-
-        .media-add-icon {
-          width: 18px;
-          height: 20px;
-          background-image: url('data:image/svg+xml, <svg viewBox="0 0 18 20" xmlns="http://www.w3.org/2000/svg"> <path stroke="rgb(244, 238, 224)" d="M12.1725 4.95085L5.58651 11.5368C5.39549 11.7213 5.24312 11.942 5.13831 12.186C5.03349 12.43 4.97831 12.6925 4.97601 12.958C4.9737 13.2236 5.0243 13.487 5.12486 13.7328C5.22543 13.9785 5.37393 14.2019 5.56172 14.3896C5.7495 14.5774 5.97281 14.7259 6.2186 14.8265C6.46439 14.9271 6.72775 14.9777 6.99331 14.9753C7.25887 14.973 7.52131 14.9179 7.76532 14.8131C8.00932 14.7082 8.23001 14.5559 8.41451 14.3648L14.8285 7.77885C15.5571 7.02444 15.9603 6.01403 15.9512 4.96524C15.9421 3.91646 15.5214 2.91321 14.7798 2.17157C14.0381 1.42994 13.0349 1.00926 11.9861 1.00015C10.9373 0.991038 9.92692 1.39422 9.17251 2.12285L2.75751 8.70785C1.63219 9.83316 1 11.3594 1 12.9508C1 14.5423 1.63219 16.0685 2.75751 17.1938C3.88282 18.3192 5.40907 18.9514 7.00051 18.9514C8.59194 18.9514 10.1182 18.3192 11.2435 17.1938L17.5005 10.9508" /></svg>');
-        }
-
-        &:hover {
-          .media-add-icon {
-            background-image: url('data:image/svg+xml, <svg viewBox="0 0 18 20" xmlns="http://www.w3.org/2000/svg"> <path stroke="rgb(151, 158, 150)" d="M12.1725 4.95085L5.58651 11.5368C5.39549 11.7213 5.24312 11.942 5.13831 12.186C5.03349 12.43 4.97831 12.6925 4.97601 12.958C4.9737 13.2236 5.0243 13.487 5.12486 13.7328C5.22543 13.9785 5.37393 14.2019 5.56172 14.3896C5.7495 14.5774 5.97281 14.7259 6.2186 14.8265C6.46439 14.9271 6.72775 14.9777 6.99331 14.9753C7.25887 14.973 7.52131 14.9179 7.76532 14.8131C8.00932 14.7082 8.23001 14.5559 8.41451 14.3648L14.8285 7.77885C15.5571 7.02444 15.9603 6.01403 15.9512 4.96524C15.9421 3.91646 15.5214 2.91321 14.7798 2.17157C14.0381 1.42994 13.0349 1.00926 11.9861 1.00015C10.9373 0.991038 9.92692 1.39422 9.17251 2.12285L2.75751 8.70785C1.63219 9.83316 1 11.3594 1 12.9508C1 14.5423 1.63219 16.0685 2.75751 17.1938C3.88282 18.3192 5.40907 18.9514 7.00051 18.9514C8.59194 18.9514 10.1182 18.3192 11.2435 17.1938L17.5005 10.9508" /></svg>');
-          }
-        }
-      }
-
-      .message-form {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-
-        .send-btn {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          background-color: #7298FB;
-          width: 30px;
-          height: 30px;
-          border-radius: 15px;
-          outline: none;
-          text-decoration: none;
-          border: none;
-          transition: 0.3s;
-
-          .send-btn-img {
-            width: 17px;
-            margin-top: 3px;
-            height: 17px;
-            background-image: url('data:image/svg+xml, <svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg"> <path stroke="rgb(244, 238, 224)" fill="none" d="M6.99388 10.0061L16 1M6.99388 10.0061L9.85946 15.7373C9.89538 15.8157 9.95306 15.8821 10.0256 15.9287C10.0982 15.9752 10.1826 16 10.2688 16C10.3551 16 10.4395 15.9752 10.512 15.9287C10.5846 15.8821 10.6423 15.8157 10.6782 15.7373L16 1M6.99388 10.0061L1.26271 7.14054C1.18432 7.10462 1.1179 7.04694 1.07133 6.97438C1.02476 6.90181 1 6.81739 1 6.73117C1 6.64494 1.02476 6.56053 1.07133 6.48796C1.1179 6.41539 1.18432 6.35772 1.26271 6.3218L16 1" /></svg>');
-          }
-
-          &:hover {
-            background-color: var(--violet);
-          }
-        }
-      }
-    }
-  }
-}
-
 .right-message {
   justify-content: flex-end;
 }
@@ -246,11 +41,11 @@
 }
 
 .search-input {
-  width: 340px;
-  height: 36px;
+  width: 340px!important;
+  height: 44px!important;
   margin-bottom: 16px;
   padding: 0 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: var(--violet-dark);
   font-family: inherit;
   border: 1px solid var(--violet);
@@ -290,16 +85,17 @@
 }
 
 .chat-input {
-  width: 920px;
+  width: 700px!important;
   height: 36px;
   padding: 0 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: var(--violet-dark);
   font-family: inherit;
   border: 1px solid var(--violet);
   font-weight: 400;
   color: var(--text-color);
   box-sizing: border-box;
+  margin: 0!important;
 
   &:focus {
     box-shadow: 0 0 4px var(--text-color);
@@ -329,102 +125,6 @@
 
   &::placeholder {
     transform: translateY(1px);
-  }
-}
-
-.chat-list-item {
-  display: flex;
-  justify-content: flex-start;
-  width: 420px;
-  border-radius: 0 10px 10px 0;
-  padding: 10px 0;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #2A2933
-  }
-
-  .user-info-avatar {
-    margin-left: 40px;
-    margin-right: 15px;
-
-    .no-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 20px;
-      background-color: #7298FB;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      p {
-        font-size: 14px;
-      }
-    }
-  }
-
-  .chat-info {
-    margin-right: 10px;
-    display: flex;
-    gap: 3px;
-    margin-left: 0;
-    flex-direction: column;
-
-    .chat-info-meta {
-      display: flex;
-      width: 275px;
-      justify-content: space-between;
-      margin: 0;
-
-      .addressee {
-        font-size: 14px;
-        font-weight: 400;
-      }
-
-      .date {
-        font-size: 12px;
-        font-weight: 200;
-        margin-top: 1px;
-      }
-    }
-
-    .chat-info-data {
-      display: flex;
-      width: 100%;
-      justify-content: flex-start;
-
-      .you {
-        font-size: 14px;
-        font-weight: 500;
-        margin-right: 10px;
-      }
-
-      .messege {
-        font-size: 14px;
-        font-weight: 200;
-        white-space: wrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
-    }
-  }
-
-  .counter {
-    border-radius: 7px;
-    width: auto;
-    height: 21px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--violet);
-
-    p {
-      width: 100%;
-      text-align: center;
-      padding: 1px 7px;
-      font-size: 14px;
-      font-weight: 200;
-    }
   }
 }
 

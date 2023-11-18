@@ -1,6 +1,16 @@
-import NotFoundCompiler from './notFound';
+import { ErrorPage } from '../../components/ErrorPage';
+import Block from '../../core/Block';
+import { tmpl } from './notFound.tmpl';
 
-export const NotFound = new NotFoundCompiler({
-  statusCode: '404',
-  comment: 'Страница не найдена',
-});
+export class NotFound extends Block {
+  init() {
+    this.children.error = new ErrorPage({
+      errorCodeText: '404',
+      errorDescription: 'Страница не найдена',
+    });
+  }
+
+  render() {
+    return this.compile(tmpl, this.props);
+  }
+}

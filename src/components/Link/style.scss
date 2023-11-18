@@ -1,0 +1,28 @@
+@import './../../globalstyles';
+
+.common-link {
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.back-link {
+  background-color: var(--violet);
+  width: 200px;
+  margin-top: 12px;
+  height: 36px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    color: var(--violet-dark);
+    background-color: var(--text-color);
+  }
+}

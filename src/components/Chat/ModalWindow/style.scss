@@ -1,0 +1,58 @@
+@import './../../../globalstyles';
+
+.modal-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0 0 0 / 70%);;
+    position: absolute;
+    margin: auto;
+    inset: 0;
+    display: none;
+
+  .modal-window {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    max-height: 200px;
+    background-color: var(--violet);
+    position: absolute;
+    margin: auto;
+    inset: 0;
+    text-align: center;
+    border-radius: 5px;
+    z-index: 1000;
+    box-sizing: border-box;
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 360px;
+      height: 30px;
+      margin: 20px;
+
+      .modal-title {
+        width: auto;
+        margin: 0;
+      }
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      width: 360px;
+
+      .modal-form-input {
+        width: 360px;
+      }
+
+      .modal-form-button {
+        width: 360px;
+
+        &:hover {
+          background-color: var(--violet-dark);
+        }
+      }
+    }
+  }
+}

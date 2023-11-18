@@ -1,7 +1,11 @@
-export type HintProps = {
+import { PropsWithRouter } from '../../../hocs/withRouter';
+
+export interface HintProps extends PropsWithRouter {
   hintText?: string;
-  to?: string;
   hintLinkText: string;
   imgSrc?: unknown;
-  name: string;
-};
+  to: string;
+  events?: {
+    click: (event: MouseEvent) => void;
+  };
+}
