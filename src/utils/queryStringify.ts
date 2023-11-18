@@ -21,7 +21,7 @@ export default function queryStringify(data: StringIndexed = {}, parentKey: stri
         params.push(nestedParams);
       }
     } else {
-      params.push(`${paramKey}=${value}`);
+      params.push(`${paramKey}=${encodeURIComponent(value)}`);
     }
   });
 

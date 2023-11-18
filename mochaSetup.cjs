@@ -1,4 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable func-names */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { JSDOM } = require('jsdom');
 
 const { window } = new JSDOM('<main id="app"></main>', {
@@ -8,3 +9,7 @@ const { window } = new JSDOM('<main id="app"></main>', {
 global.window = window;
 global.document = window.document;
 global.DocumentFragment = window.DocumentFragment;
+
+require.extensions['.scss'] = function () {
+  module.exports = () => ({});
+};

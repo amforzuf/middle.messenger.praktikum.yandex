@@ -9,6 +9,9 @@ class Router {
 
   private _currentRoute: Route | null;
 
+  // eslint-disable-next-line no-use-before-define
+  private static __instance?: Router;
+
   public constructor(private readonly _rootQuery: string) {
     this.routes = [];
     this.history = window.history;
@@ -61,6 +64,13 @@ class Router {
 
   private getRoute(pathname: string) {
     return this.routes.find((route) => route.match(pathname));
+  }
+
+  public reset() {
+    delete Router.__instance;
+
+    // eslint-disable-next-line no-new
+    new Router(this._rootQuery);
   }
 }
 
